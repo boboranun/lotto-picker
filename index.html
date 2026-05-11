@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🕹️ LOTTO ARCADE</title>
+<link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIABpAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAATBJREFUeJzFk6FOA0EQhr8hGFKDOFXDCzQYAgsODJgKwFT2khqS2hOcqa05JCEQIFddUYXhBcjSYEifgCBPYJrKQZTd3l0LgVQwanZn/m/nz2RF23fKErGyjBhg1SVy2QJAx4kvPlxEPq93sOmHmvB9etar+yLAgypR+cqFCddlmo1mrj1AxwlSidBxgu1HcVm9G3LMSA01WWzBhe1HsWlq92Sr2KiqiIgFTLp/BI1GEZD3CzB4mY1ZhjW/xPCLLeTFaXBoyvUfAU7spgmzR/snQF6cD7lsedAcwBxsd21PYtuTGMDlImJTPTcAexp4K3NbcBCAQfMZoMvbDkEy5JrbuV4PqJ/qGh2ZyMYwP2yhOYuy7wHUZFKtbnJz9rpoqOkjHWyQYJ4ks7QxAPLvv/ETXjthdWT2jYIAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" sizes="512x512" href="data:image/png;base64,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">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="LOTTO ARCADE">
+<meta name="theme-color" content="#1a1a2e">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --bg:      #1a1a2e;
+  --bg2:     #16213e;
+  --pink:    #ff6b9d;
+  --pink2:   #ff2d78;
+  --cyan:    #00d4ff;
+  --cyan2:   #00a8cc;
+  --yellow:  #ffe135;
+  --green:   #39ff14;
+  --purple:  #c77dff;
+  --orange:  #ff9500;
+  --cream:   #f5e6c8;
+  --dark:    #0d0d1a;
+  --pixel:   4px; /* 픽셀 단위 */
+}
+
+* { margin:0; padding:0; box-sizing:border-box; image-rendering:pixelated; }
+
+body {
+  background: var(--bg);
+  background-image:
+    linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  min-height: 100vh;
+  font-family: 'Press Start 2P', monospace;
+  display: flex; flex-direction: column; align-items: center;
+  overflow-x: hidden;
+  padding-bottom: 40px;
+}
+
+/* ── 스캔라인 오버레이 ── */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+  );
+  pointer-events:none; z-index:999;
+}
+
+/* ── 픽셀 박스 (CSS 픽셀 테두리) ── */
+.px-box {
+  image-rendering: pixelated;
+  position: relative;
+}
+.px-box::before {
+  content:''; position:absolute;
+  inset:-4px; z-index:-1;
+  background: var(--border-col, #fff);
+  clip-path: polygon(
+    4px 0%, calc(100% - 4px) 0%,
+    100% 4px, 100% calc(100% - 4px),
+    calc(100% - 4px) 100%, 4px 100%,
+    0% calc(100% - 4px), 0% 4px
+  );
+}
+
+/* ── 메인 랩 ── */
+.wrap {
+  width:100%; max-width:420px;
+  display:flex; flex-direction:column; align-items:center;
+  padding:16px 12px 0; gap:12px;
+  position:relative; z-index:1;
+}
+
+/* ── 상단 HUD 바 ── */
+.hud-bar {
+  width:100%;
+  background: #000;
+  border: 4px solid var(--cyan);
+  box-shadow: 0 0 0 4px #000, 0 0 0 8px var(--cyan), 0 0 20px var(--cyan);
+  padding: 8px 12px;
+  display: flex; align-items:center; justify-content:space-between;
+}
+.hud-lives { display:flex; gap:6px; }
+.hud-heart { font-size:.6rem; color:var(--pink2); }
+.hud-level { font-size:.5rem; color:var(--yellow); }
+.hud-score { font-size:.45rem; color:var(--green); text-align:right; }
+
+/* ── 아케이드 타이틀 패널 ── */
+.title-panel {
+  width:100%;
+  background: var(--pink);
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0 #000, 0 0 0 4px #000, 0 0 20px rgba(255,107,157,0.5);
+  padding: 12px 8px 10px;
+  text-align:center;
+  position:relative;
+}
+.title-panel::before, .title-panel::after {
+  content:'★'; position:absolute; top:50%; transform:translateY(-50%);
+  color:var(--yellow); font-size:.9rem;
+}
+.title-panel::before { left:10px; }
+.title-panel::after  { right:10px; }
+.title-main {
+  font-size:clamp(.75rem,3.5vw,1rem);
+  color:#fff;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000;
+  line-height:1.6;
+  letter-spacing:1px;
+}
+.title-main span { color:var(--yellow); }
+.title-sub {
+  font-size:.4rem; color:rgba(255,255,255,0.7); margin-top:4px;
+  letter-spacing:3px;
+}
+
+/* ── 아케이드 기계 창 ── */
+.arcade-frame {
+  width:100%;
+  background: #000;
+  border: 4px solid var(--pink);
+  box-shadow: 0 0 0 4px #000, 0 0 0 8px var(--pink), 6px 6px 0 #000,
+              0 0 30px rgba(255,107,157,0.3);
+  position:relative; overflow:hidden;
+}
+
+/* 창 헤더 (윈도우 98 스타일) */
+.arcade-titlebar {
+  background: linear-gradient(90deg, var(--cyan2), var(--cyan));
+  padding: 5px 8px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:3px solid #000;
+}
+.atb-title { font-size:.42rem; color:#000; letter-spacing:1px; }
+.atb-btns  { display:flex; gap:3px; }
+.atb-btn   {
+  width:14px; height:14px; border:2px solid #000;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.35rem; cursor:pointer;
+}
+.atb-btn.red   { background:#ff5f57; }
+.atb-btn.yel   { background:#febc2e; }
+.atb-btn.grn   { background:#28c840; }
+
+/* ── 캔버스 창 ── */
+.canvas-wrap {
+  background:#000;
+  border-bottom:3px solid #000;
+  position:relative;
+  height:200px; overflow:hidden;
+}
+#ballCanvas { display:block; width:100%; height:100%; }
+
+/* 창 안 대기 텍스트 */
+.canvas-idle {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; transition:opacity .3s;
+}
+.canvas-idle.hidden { opacity:0; pointer-events:none; }
+.blink-txt {
+  font-size:.55rem; color:var(--yellow);
+  animation:blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+.press-ico { font-size:1.8rem; animation:float 2s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+
+/* 로딩바 (스피닝 중) */
+.loading-bar-wrap {
+  position:absolute; bottom:12px; left:12px; right:12px;
+  display:none;
+}
+.loading-bar-wrap.show { display:block; }
+.loading-label { font-size:.38rem; color:var(--cyan); margin-bottom:4px; }
+.loading-track {
+  height:10px; background:#111;
+  border:2px solid var(--cyan);
+  box-shadow:0 0 8px var(--cyan);
+}
+.loading-fill {
+  height:100%; background:var(--cyan);
+  box-shadow:0 0 6px var(--cyan);
+  width:0%; transition:none;
+}
+
+/* ── 기계 하단 패널 ── */
+.machine-panel {
+  background: var(--bg2);
+  border-top: 3px solid #000;
+  padding: 8px 12px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.status-screen {
+  background:#000; border:2px solid var(--green);
+  padding:4px 10px; font-size:.38rem;
+  box-shadow:0 0 8px var(--green);
+  transition:color .3s;
+}
+.insert-coin {
+  font-size:.38rem; color:var(--yellow);
+  animation:blink 1.2s step-end infinite;
+  letter-spacing:1px;
+}
+
+/* ── 결과 카드 ── */
+.result-card {
+  width:100%;
+  background: #000;
+  border:4px solid var(--yellow);
+  box-shadow:0 0 0 4px #000, 0 0 0 8px var(--yellow), 4px 4px 0 #000,
+             0 0 20px rgba(255,225,53,0.3);
+  padding:14px 10px 16px;
+  position:relative;
+}
+.result-tag {
+  position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+  background:var(--yellow); border:3px solid #000;
+  font-size:.38rem; color:#000; padding:3px 12px;
+  box-shadow:2px 2px 0 #000; white-space:nowrap; letter-spacing:1px;
+}
+
+/* 결과 공들 한 줄 */
+.result-balls {
+  display:flex; flex-wrap:nowrap; gap:6px;
+  justify-content:center; align-items:center;
+  min-height:70px;
+}
+.lotto-ball-wrap {
+  flex-shrink:0; width:56px; height:56px;
+  opacity:0; transform:scale(0);
+  transition:transform .4s steps(6,end), opacity .1s;
+}
+.lotto-ball-wrap.show { opacity:1; transform:scale(1); }
+.lotto-ball-inner { position:relative; width:56px; height:56px; }
+.lotto-ball-inner svg { display:block; image-rendering:pixelated; }
+.lotto-ball-num {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.75rem; font-weight:900; pointer-events:none;
+  padding-top:2px; font-family:'Press Start 2P',monospace;
+  text-shadow:1px 1px 0 rgba(0,0,0,0.5);
+}
+
+/* ── 뽑기 버튼 ── */
+.btn-row {
+  width:100%; display:flex; gap:8px;
+}
+.draw-btn {
+  flex:1; padding:16px 0;
+  background: var(--pink);
+  border:0; outline:none; cursor:pointer;
+  font-family:'Press Start 2P',monospace;
+  font-size:.65rem; color:#fff;
+  letter-spacing:1px;
+  position:relative;
+  /* 픽셀 버튼 그림자 */
+  box-shadow:
+    4px 0 0 #000, -4px 0 0 #000,
+    0 4px 0 #000, 0 -4px 0 #000,
+    4px 4px 0 #000, -4px 4px 0 #000,
+    4px -4px 0 #000, -4px -4px 0 #000,
+    0 6px 0 #9b1a40, 0 0 20px rgba(255,107,157,0.4);
+  transition:transform .08s steps(2,end), box-shadow .08s steps(2,end);
+}
+.draw-btn:hover:not(:disabled) {
+  background:var(--pink2);
+  box-shadow:
+    4px 0 0 #000, -4px 0 0 #000,
+    0 4px 0 #000, 0 -4px 0 #000,
+    4px 4px 0 #000, -4px 4px 0 #000,
+    4px -4px 0 #000, -4px -4px 0 #000,
+    0 8px 0 #9b1a40, 0 0 30px rgba(255,45,120,0.6);
+  transform:translateY(-2px);
+}
+.draw-btn:active:not(:disabled) {
+  transform:translateY(4px);
+  box-shadow:
+    4px 0 0 #000, -4px 0 0 #000,
+    0 4px 0 #000, 0 -4px 0 #000,
+    4px 4px 0 #000, -4px 4px 0 #000,
+    4px -4px 0 #000, -4px -4px 0 #000,
+    0 2px 0 #9b1a40;
+}
+.draw-btn:disabled { opacity:.45; cursor:not-allowed; transform:none; }
+.draw-btn::before {
+  content:'🕹️'; position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  font-size:1rem;
+}
+
+/* ── 결과 메시지 ── */
+.result-msg {
+  font-size:.42rem; color:var(--green);
+  text-shadow:0 0 8px var(--green);
+  opacity:0; transition:opacity .3s;
+  text-align:center; letter-spacing:1px;
+  animation:blink 1.5s step-end infinite;
+}
+.result-msg.show { opacity:1; }
+
+/* ── 히스토리 ── */
+.history {
+  width:100%; background:#000;
+  border:3px solid var(--purple);
+  box-shadow:0 0 0 3px #000, 0 0 10px rgba(199,125,255,0.3);
+  padding:10px 12px; display:none;
+}
+.history.show { display:block; }
+.history-title { font-size:.38rem; color:var(--purple); margin-bottom:8px; letter-spacing:1px; }
+
+.history-row {
+  display:flex; align-items:center;
+  margin-bottom:6px; gap:6px;
+  cursor:pointer;
+  padding:4px 6px;
+  border:2px solid transparent;
+  transition:border-color .1s steps(2,end);
+}
+.history-row:hover { border-color:rgba(199,125,255,0.4); }
+.history-row.expanded { border-color:var(--purple); background:rgba(199,125,255,0.07); }
+
+.history-idx { font-size:.32rem; color:#666; min-width:22px; flex-shrink:0; }
+
+/* 번호 태그들 (공 없이 숫자만) */
+.history-nums { display:flex; gap:5px; align-items:center; flex:1; flex-wrap:nowrap; }
+.hist-num {
+  font-size:.38rem;
+  padding:3px 5px;
+  border:2px solid var(--border, #555);
+  color: var(--col, #ccc);
+  background: var(--bg3, #111);
+  box-shadow: 2px 2px 0 #000;
+  min-width:28px; text-align:center;
+  flex-shrink:0;
+  letter-spacing:0;
+  image-rendering:pixelated;
+}
+
+/* 펼치기 버튼 */
+.hist-expand-btn {
+  font-size:.3rem; color:var(--purple);
+  flex-shrink:0; padding:2px 4px;
+  border:2px solid var(--purple);
+  box-shadow:1px 1px 0 #000;
+  animation: none;
+  letter-spacing:0;
+}
+
+/* 확대 오버레이 */
+.expand-overlay {
+  position:fixed; inset:0; z-index:500;
+  background:rgba(0,0,0,0.88);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity .15s steps(3,end);
+}
+.expand-overlay.show { opacity:1; pointer-events:all; }
+.expand-box {
+  background:#000; border:4px solid var(--purple);
+  box-shadow:0 0 0 4px #000, 0 0 0 8px var(--purple), 0 0 40px rgba(199,125,255,0.5);
+  padding:24px 20px 20px;
+  max-width:360px; width:90%;
+  position:relative;
+}
+.expand-title {
+  font-size:.4rem; color:var(--purple); margin-bottom:16px;
+  text-align:center; letter-spacing:2px;
+}
+.expand-nums {
+  display:flex; flex-wrap:wrap; gap:10px;
+  justify-content:center; margin-bottom:18px;
+}
+.expand-num {
+  width:52px; height:52px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.9rem;
+  border:3px solid var(--border,#555);
+  color:var(--col,#ccc);
+  background:var(--bg3,#111);
+  box-shadow:3px 3px 0 #000, 0 0 10px var(--glow,transparent);
+  image-rendering:pixelated;
+}
+.expand-close {
+  display:block; width:100%;
+  padding:10px 0; background:var(--purple);
+  border:0; cursor:pointer;
+  font-family:'Press Start 2P',monospace;
+  font-size:.42rem; color:#000;
+  box-shadow:3px 3px 0 #000;
+  letter-spacing:1px;
+}
+.expand-close:hover { background:#d499ff; }
+
+/* 힌트 */
+.hint { font-size:.32rem; color:#444; letter-spacing:.5px; }
+
+/* ── 픽셀 장식 별들 ── */
+.px-star {
+  position:fixed; pointer-events:none;
+  animation:starTwinkle var(--dur,2s) step-end infinite var(--del,0s);
+  font-size:var(--fs,.6rem);
+  z-index:0;
+}
+@keyframes starTwinkle {
+  0%,100%{opacity:1;} 33%{opacity:0;} 66%{opacity:.5;}
+}
+
+/* ── 푸터 ── */
+.footer {
+  width:100%; max-width:420px;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  padding:14px 12px 0;
+}
+.footer-made { font-size:.32rem; color:#444; letter-spacing:1px; }
+.footer-link {
+  font-size:.45rem; color:var(--cyan);
+  text-decoration:none; letter-spacing:1px;
+  text-shadow:0 0 8px var(--cyan);
+  padding:6px 16px;
+  border:3px solid var(--cyan);
+  box-shadow:3px 3px 0 #000, 0 0 12px rgba(0,212,255,0.3);
+  transition:transform .1s steps(2,end);
+}
+.footer-link:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 #000; }
+.footer-sub { font-size:.3rem; color:#333; }
+
+/* ── 파티클 효과 ── */
+.particle {
+  position:fixed; pointer-events:none; z-index:100;
+  width:8px; height:8px;
+  animation:pxFall var(--pf,.8s) steps(8,end) forwards;
+}
+@keyframes pxFall {
+  0%  { transform:translate(0,0) rotate(0deg); opacity:1; }
+  100%{ transform:translate(var(--px,30px),var(--py,60px)) rotate(var(--pr,180deg)); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<!-- 픽셀 별 배경 -->
+<div id="bgStars"></div>
+
+<div class="wrap">
+
+  <!-- HUD 바 -->
+  <div class="hud-bar">
+    <div>
+      <div class="hud-level">LV.01</div>
+      <div class="hud-lives">
+        <span class="hud-heart">♥</span>
+        <span class="hud-heart">♥</span>
+        <span class="hud-heart">♥</span>
+        <span class="hud-heart">♥</span>
+        <span class="hud-heart">♥</span>
+      </div>
+    </div>
+    <div class="hud-score">
+      <div>HI-SCORE</div>
+      <div style="color:var(--yellow);margin-top:3px;" id="hiScore">000000</div>
+    </div>
+  </div>
+
+  <!-- 타이틀 -->
+  <div class="title-panel">
+    <div class="title-main">
+      <span>LUCKY</span> LOTTO<br>
+      <span style="color:#fff;font-size:.8em;">행운번호 뽑기</span>
+    </div>
+    <div class="title-sub">· NEWTRO ARCADE · INSERT COIN ·</div>
+  </div>
+
+  <!-- 아케이드 기계 창 -->
+  <div class="arcade-frame">
+
+    <!-- 타이틀바 (윈도우 스타일) -->
+    <div class="arcade-titlebar">
+      <div class="atb-title">LOTTO_MACHINE.EXE</div>
+      <div class="atb-btns">
+        <div class="atb-btn grn">▪</div>
+        <div class="atb-btn yel">▪</div>
+        <div class="atb-btn red">✕</div>
+      </div>
+    </div>
+
+    <!-- 공 캔버스 -->
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="ballCanvas"></canvas>
+      <div class="canvas-idle" id="canvasIdle">
+        <div class="press-ico">🎱</div>
+        <div class="blink-txt">PRESS START!</div>
+      </div>
+      <div class="loading-bar-wrap" id="loadingBarWrap">
+        <div class="loading-label">LOADING...</div>
+        <div class="loading-track"><div class="loading-fill" id="loadingFill"></div></div>
+      </div>
+    </div>
+
+    <!-- 하단 패널 -->
+    <div class="machine-panel">
+      <div class="status-screen" id="statusScreen" style="color:var(--green);">READY</div>
+      <div class="insert-coin">★ INSERT COIN ★</div>
+    </div>
+
+  </div>
+
+  <!-- 결과 카드 -->
+  <div class="result-card">
+    <div class="result-tag">♡ TODAY'S LUCKY NUMBER ♡</div>
+    <div class="result-balls" id="results"></div>
+  </div>
+
+  <!-- 결과 메시지 -->
+  <div class="result-msg" id="resultMsg">✦ LUCKY NUMBER GET! ✦</div>
+
+  <!-- 뽑기 버튼 -->
+  <div class="btn-row">
+    <button class="draw-btn" id="drawBtn" onclick="startDraw()">START!</button>
+  </div>
+
+  <!-- 히스토리 -->
+  <div class="history" id="history">
+    <div class="history-title">▶ PLAY HISTORY</div>
+    <div id="historyList"></div>
+  </div>
+
+  <div class="hint">* 1~45 · RANDOM 6 NUMBERS *</div>
+
+</div>
+
+<!-- 확대 오버레이 -->
+<div class="expand-overlay" id="expandOverlay" onclick="closeExpand(event)">
+  <div class="expand-box">
+    <div class="expand-title" id="expandTitle">▶ PLAY HISTORY #1</div>
+    <div class="expand-nums" id="expandNums"></div>
+    <button class="expand-close" onclick="closeExpandBtn()">[ CLOSE ]</button>
+  </div>
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+  <div class="footer-made">MADE WITH CLAUDE AI 🤖</div>
+  <a class="footer-link" href="https://m.blog.naver.com/boyoum" target="_blank">▶ @BOBORANUN</a>
+  <div class="footer-sub">POWERED BY CLAUDE SONNET · ANTHROPIC</div>
+</div>
+
+<script>
+/* ── 배경 픽셀 별 ── */
+const bgStars = document.getElementById('bgStars');
+const starSyms = ['✦','★','◆','✶','♦','·'];
+const starCols = ['#ff6b9d','#00d4ff','#ffe135','#39ff14','#c77dff','#ff9500'];
+for (let i = 0; i < 30; i++) {
+  const s = document.createElement('div');
+  s.className = 'px-star';
+  s.textContent = starSyms[i % starSyms.length];
+  s.style.cssText = `
+    top:${Math.random()*100}%; left:${Math.random()*100}%;
+    color:${starCols[i%starCols.length]};
+    --fs:${.4+Math.random()*.7}rem;
+    --dur:${1.5+Math.random()*3}s;
+    --del:${Math.random()*3}s;
+  `;
+  bgStars.appendChild(s);
+}
+
+/* ── 볼 팔레트 ── */
+const PALETTES = [
+  { main:'#ffe135', light:'#fff088', dark:'#9a8000', text:'#5a4000' }, // 1~10 노랑
+  { main:'#00d4ff', light:'#80eeff', dark:'#006688', text:'#003344' }, // 11~20 시안
+  { main:'#39ff14', light:'#90ff70', dark:'#1a8000', text:'#0a4000' }, // 21~30 그린
+  { main:'#c77dff', light:'#e8b8ff', dark:'#6030a8', text:'#300860' }, // 31~40 퍼플
+  { main:'#ff6b9d', light:'#ffb8d0', dark:'#b02050', text:'#600020' }, // 41~45 핑크
+];
+function getPal(n) {
+  if(n<=10) return PALETTES[0];
+  if(n<=20) return PALETTES[1];
+  if(n<=30) return PALETTES[2];
+  if(n<=40) return PALETTES[3];
+  return PALETTES[4];
+}
+
+/* 픽셀아트 SVG 공 - 8x8 픽셀 그리드 스타일 */
+function makePixelBallSVG(size, n) {
+  const p = getPal(n);
+  const uid = `pb${size}${n}${Math.random().toString(36).slice(2,5)}`;
+  const s = size;
+  // 픽셀 단위 (s를 16등분)
+  const u = s / 16;
+
+  // 픽셀 원 마스크 (16x16 픽셀 그리드로 원 그리기)
+  // 외부 색 픽셀들 (테두리 포함)
+  const outerPx = [
+    [4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],
+    [2,1],[3,1],[4,1],[11,1],[12,1],[13,1],
+    [1,2],[2,2],[13,2],[14,2],
+    [1,3],[14,3],
+    [0,4],[15,4],
+    [0,5],[15,5],
+    [0,6],[15,6],
+    [0,7],[15,7],
+    [0,8],[15,8],
+    [0,9],[15,9],
+    [0,10],[15,10],
+    [0,11],[15,11],
+    [1,12],[14,12],
+    [1,13],[14,13],
+    [2,14],[3,14],[12,14],[13,14],
+    [4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],[11,15],
+  ];
+
+  let outerRects = outerPx.map(([px,py]) =>
+    `<rect x="${px*u}" y="${py*u}" width="${u}" height="${u}" fill="#000"/>`
+  ).join('');
+
+  // 내부 채우기 (대략적 원형)
+  let innerRects = '';
+  for (let row = 0; row < 16; row++) {
+    for (let col = 0; col < 16; col++) {
+      const cx = col + 0.5 - 8, cy = row + 0.5 - 8;
+      const dist = Math.sqrt(cx*cx + cy*cy);
+      if (dist < 7.2 && dist > 0.1) {
+        // 색 결정
+        let fill;
+        if (dist < 3.5) {
+          // 안쪽 흰 영역
+          fill = '#fff';
+        } else {
+          // 컬러 링
+          fill = p.main;
+          if (dist > 6) fill = p.dark;
+          else if (dist > 5.2) fill = p.main;
+          else fill = p.main;
+        }
+        // 하이라이트 픽셀
+        if (col < 8 && row < 6 && dist > 4 && dist < 6.5) {
+          fill = p.light;
+        }
+        innerRects += `<rect x="${col*u}" y="${row*u}" width="${u}" height="${u}" fill="${fill}"/>`;
+      }
+    }
+  }
+
+  // 흰 안쪽 원 테두리 (픽셀)
+  const borderPx = [
+    [5,3],[6,3],[7,3],[8,3],[9,3],[10,3],
+    [4,4],[11,4],
+    [3,5],[12,5],
+    [3,6],[12,6],
+    [3,7],[12,7],
+    [3,8],[12,8],
+    [3,9],[12,9],
+    [4,10],[11,10],
+    [5,11],[6,11],[7,11],[8,11],[9,11],[10,11],
+  ];
+  let borderRects = borderPx.map(([px,py]) =>
+    `<rect x="${px*u}" y="${py*u}" width="${u}" height="${u}" fill="rgba(0,0,0,0.15)"/>`
+  ).join('');
+
+  return `<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+  ${innerRects}
+  ${borderRects}
+  ${outerRects}
+</svg>`;
+}
+
+/* ════════════════════════════════
+   캔버스 회전 애니메이션
+   ════════════════════════════════ */
+const canvas = document.getElementById('ballCanvas');
+const ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+let animId = null;
+
+// 캔버스 볼 색상
+const CBALL_COLS = [
+  {main:'#ffe135',light:'#fff480',dark:'#9a8000'},
+  {main:'#00d4ff',light:'#80eeff',dark:'#006688'},
+  {main:'#39ff14',light:'#90ff70',dark:'#1a8000'},
+  {main:'#c77dff',light:'#e8b8ff',dark:'#6030a8'},
+  {main:'#ff6b9d',light:'#ffb8d0',dark:'#b02050'},
+  {main:'#ff9500',light:'#ffcc70',dark:'#8a5000'},
+  {main:'#ff2d78',light:'#ff90b8',dark:'#8a0030'},
+];
+
+let spinBalls = [];
+let globalAngle = 0;
+let spinSpeed   = 0;
+let phase       = 'idle';
+let spinDoneCb  = null;
+
+// 궤도 설정
+const ORBITS = [
+  { count:8, rFrac:0.40, tilt:0.30 },
+  { count:5, rFrac:0.24, tilt:0.35 },
+  { count:3, rFrac:0.11, tilt:0.40 },
+];
+
+function initBalls() {
+  spinBalls = [];
+  let ci = 0;
+  ORBITS.forEach(orb => {
+    for (let i = 0; i < orb.count; i++) {
+      spinBalls.push({
+        baseAngle:  (i / orb.count) * Math.PI * 2 + Math.random()*.4,
+        orbitR:     orb.rFrac,
+        tilt:       orb.tilt,
+        phOff:      Math.random() * .3,
+        sizeFrac:   .09 + Math.random()*.025,
+        col:        CBALL_COLS[ci % CBALL_COLS.length],
+        num:        Math.floor(Math.random()*45)+1,
+      });
+      ci++;
+    }
+  });
+}
+
+function resizeCanvas() {
+  const wrap = document.getElementById('canvasWrap');
+  canvas.width  = wrap.clientWidth;
+  canvas.height = wrap.clientHeight;
+}
+
+/* 픽셀화된 원 그리기 */
+function drawPixelCircle(x, y, r, col) {
+  const px = Math.max(2, Math.floor(r / 5)); // 픽셀 크기
+  const ir = Math.floor(r / px); // 픽셀 단위 반지름
+
+  for (let row = -ir; row <= ir; row++) {
+    for (let col2 = -ir; col2 <= ir; col2++) {
+      const dist = Math.sqrt(row*row + col2*col2);
+      if (dist > ir) continue;
+
+      const px1 = Math.floor(x + col2*px);
+      const py1 = Math.floor(y + row*px);
+
+      let fillColor;
+      if (dist < ir * 0.45) {
+        // 흰 내부
+        fillColor = dist < ir*0.35 ? '#ffffff' : '#f0f0f0';
+      } else if (dist > ir * 0.88) {
+        fillColor = col.dark;
+      } else {
+        fillColor = col.main;
+        // 하이라이트 (왼쪽 위)
+        if (col2 < -ir*0.1 && row < -ir*0.1 && dist > ir*0.55) {
+          fillColor = col.light;
+        }
+      }
+
+      ctx.fillStyle = fillColor;
+      ctx.fillRect(px1, py1, px, px);
+    }
+  }
+
+  // 테두리 (픽셀)
+  for (let row = -ir; row <= ir; row++) {
+    for (let col2 = -ir; col2 <= ir; col2++) {
+      const dist = Math.sqrt(row*row + col2*col2);
+      if (dist >= ir - 0.5 && dist <= ir + 0.5) {
+        ctx.fillStyle = '#000';
+        ctx.fillRect(Math.floor(x+col2*px), Math.floor(y+row*px), px, px);
+      }
+    }
+  }
+}
+
+function drawNum(x, y, r, num, col) {
+  const textCol = col.dark;
+  const fs = Math.max(7, r * 0.52);
+  ctx.font = `900 ${fs}px 'Press Start 2P', monospace`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  // 픽셀 그림자
+  ctx.fillStyle = 'rgba(0,0,0,0.6)';
+  ctx.fillText(num, x+1, y+1);
+  ctx.fillStyle = textCol;
+  ctx.fillText(num, x, y);
+}
+
+function renderSpinFrame() {
+  const W = canvas.width, H = canvas.height;
+  const cx = W/2, cy = H/2;
+
+  // 배경 (픽셀 그리드 패턴)
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0,0,W,H);
+
+  // 그리드 라인
+  ctx.strokeStyle = 'rgba(0,212,255,0.06)';
+  ctx.lineWidth = 1;
+  const gs = 16;
+  for (let x=0; x<W; x+=gs) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for (let y=0; y<H; y+=gs) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+  const speedRatio = Math.min(spinSpeed / 0.2, 1);
+
+  // 속도선 (픽셀 방사형)
+  if (speedRatio > 0.1) {
+    const lineCount = 20;
+    for (let i = 0; i < lineCount; i++) {
+      const ang = (i/lineCount)*Math.PI*2 + globalAngle*1.5;
+      const len = (W*0.45) * speedRatio;
+      const x1 = cx + Math.cos(ang)*16;
+      const y1 = cy + Math.sin(ang)*14;
+      const x2 = cx + Math.cos(ang)*len;
+      const y2 = cy + Math.sin(ang)*len * 0.55;
+
+      // 픽셀 라인 (계단식)
+      const steps = 6;
+      for (let s=0; s<steps; s++) {
+        const t = s/steps;
+        const px1 = Math.floor(x1 + (x2-x1)*t);
+        const py1 = Math.floor(y1 + (y2-y1)*t);
+        const px2 = Math.floor(x1 + (x2-x1)*(t+1/steps));
+        const py2 = Math.floor(y1 + (y2-y1)*(t+1/steps));
+        ctx.strokeStyle = `rgba(255,255,255,${speedRatio*0.12 * (1-t)})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(px1,py1); ctx.lineTo(px2,py2); ctx.stroke();
+      }
+    }
+  }
+
+  // 중앙 소용돌이 원 (픽셀 동심원)
+  for (let i=3; i>=1; i--) {
+    const r = W * 0.10 * i;
+    const alpha = speedRatio * 0.08 / i;
+    ctx.strokeStyle = `rgba(0,212,255,${alpha})`;
+    ctx.lineWidth = 4;
+    // 픽셀 원
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke();
+  }
+
+  // 공 정렬 (깊이순)
+  const items = spinBalls.map(b => {
+    const spd = spinSpeed * (1 + b.phOff * 0.15);
+    const ang  = b.baseAngle + globalAngle * (1 + b.phOff * 0.12);
+    const orR  = b.orbitR * W;
+    const bx   = cx + Math.cos(ang) * orR;
+    const by   = cy + Math.sin(ang) * orR * b.tilt;
+    const depth = Math.sin(ang);
+    const scale = 0.6 + 0.4 * ((depth+1)/2);
+    const alpha2 = 0.4 + 0.6 * ((depth+1)/2);
+    const r     = b.sizeFrac * W * scale;
+    return { bx, by, r, depth, alpha:alpha2, col:b.col, num:b.num };
+  });
+  items.sort((a,b2) => a.depth - b2.depth);
+
+  items.forEach(it => {
+    ctx.save();
+    ctx.globalAlpha = it.alpha;
+    drawPixelCircle(it.bx, it.by, it.r, it.col);
+    if (it.r > 14) drawNum(it.bx, it.by+1, it.r, it.num, it.col);
+    ctx.restore();
+  });
+}
+
+function animLoop() {
+  if (phase === 'spinning') {
+    spinSpeed = Math.min(spinSpeed + 0.009, 0.22);
+    globalAngle += spinSpeed;
+    if (spinSpeed > 0.1 && Math.random() < 0.07)
+      spinBalls.forEach(b => { b.num = Math.floor(Math.random()*45)+1; });
+  } else if (phase === 'slowdown') {
+    spinSpeed *= 0.974;
+    globalAngle += spinSpeed;
+    if (spinSpeed < 0.003) {
+      spinSpeed = 0; phase = 'done';
+      if (spinDoneCb) spinDoneCb();
+      return;
+    }
+  }
+  renderSpinFrame();
+  animId = requestAnimationFrame(animLoop);
+}
+
+function stopAnim() {
+  if (animId) { cancelAnimationFrame(animId); animId = null; }
+}
+
+/* ── 파티클 폭발 ── */
+function spawnParticles(x, y) {
+  const colors = ['#ffe135','#ff6b9d','#00d4ff','#39ff14','#c77dff'];
+  for (let i=0; i<16; i++) {
+    const p = document.createElement('div');
+    p.className='particle';
+    const ang = (i/16)*Math.PI*2;
+    const dist = 60 + Math.random()*80;
+    p.style.cssText=`
+      left:${x}px; top:${y}px;
+      background:${colors[i%colors.length]};
+      --px:${Math.cos(ang)*dist}px;
+      --py:${Math.sin(ang)*dist}px;
+      --pr:${Math.random()*360}deg;
+      --pf:${.5+Math.random()*.5}s;
+    `;
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(), 1000);
+  }
+}
+
+/* ── 하이스코어 ── */
+let hiScore = 0;
+function updateHiScore(nums) {
+  const sc = nums.reduce((a,b)=>a+b,0) * 1000 + Math.floor(Math.random()*999);
+  if (sc > hiScore) { hiScore = sc; document.getElementById('hiScore').textContent = String(sc).padStart(6,'0'); }
+}
+
+/* ── 뽑기 로직 ── */
+let isDrawing = false, drawHistory = [];
+
+function startDraw() {
+  if (isDrawing) return;
+  isDrawing = true;
+
+  const btn       = document.getElementById('drawBtn');
+  const resultsEl = document.getElementById('results');
+  const resultMsg = document.getElementById('resultMsg');
+  const statusSc  = document.getElementById('statusScreen');
+  const idle      = document.getElementById('canvasIdle');
+  const loadWrap  = document.getElementById('loadingBarWrap');
+  const loadFill  = document.getElementById('loadingFill');
+
+  resultsEl.innerHTML = '';
+  resultMsg.classList.remove('show');
+  btn.disabled = true;
+  btn.textContent = 'LOADING...';
+
+  statusSc.textContent = 'SPINNING...';
+  statusSc.style.color = '#ff6b9d';
+
+  // 로딩바 애니메이션
+  loadWrap.classList.add('show');
+  loadFill.style.width = '0%';
+  loadFill.style.transition = 'none';
+  setTimeout(()=>{
+    loadFill.style.transition = 'width 2.6s linear';
+    loadFill.style.width = '100%';
+  }, 50);
+
+  // 캔버스 시작
+  resizeCanvas();
+  initBalls();
+  idle.classList.add('hidden');
+  stopAnim();
+  phase = 'spinning';
+  spinSpeed = 0.01;
+  globalAngle = 0;
+  animId = requestAnimationFrame(animLoop);
+
+  // 번호 생성
+  const nums = [];
+  while (nums.length < 6) {
+    const n = Math.floor(Math.random()*45)+1;
+    if (!nums.includes(n)) nums.push(n);
+  }
+  nums.sort((a,b)=>a-b);
+
+  setTimeout(()=>{ phase = 'slowdown'; loadWrap.classList.remove('show'); }, 2600);
+
+  spinDoneCb = () => {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    idle.classList.remove('hidden');
+    idle.querySelector('.press-ico').textContent = '🎉';
+    idle.querySelector('.blink-txt').textContent = 'NUMBER GET!';
+    statusSc.textContent = 'COMPLETE!';
+    statusSc.style.color = '#39ff14';
+
+    // 파티클
+    const rect = document.getElementById('canvasWrap').getBoundingClientRect();
+    spawnParticles(rect.left + rect.width/2, rect.top + rect.height/2);
+
+    nums.forEach((n, i) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'lotto-ball-wrap';
+      const inner = document.createElement('div');
+      inner.className = 'lotto-ball-inner';
+      inner.innerHTML = makePixelBallSVG(56, n);
+      const numEl = document.createElement('div');
+      numEl.className = 'lotto-ball-num';
+      numEl.style.color = getPal(n).text;
+      numEl.textContent = n;
+      inner.appendChild(numEl);
+      wrap.appendChild(inner);
+      resultsEl.appendChild(wrap);
+
+      setTimeout(()=>{
+        wrap.classList.add('show');
+        if (i===5) {
+          resultMsg.classList.add('show');
+          isDrawing = false;
+          btn.disabled = false;
+          btn.textContent = 'RETRY!';
+          updateHiScore(nums);
+          addHistory(nums);
+          setTimeout(()=>{
+            idle.querySelector('.press-ico').textContent='🎱';
+            idle.querySelector('.blink-txt').textContent='PRESS START!';
+            statusSc.textContent='READY';
+            statusSc.style.color='#39ff14';
+          }, 3000);
+        }
+      }, i*220+100);
+    });
+  };
+}
+
+/* 번호별 픽셀 색상 스타일 */
+function getNumStyle(n) {
+  const p = getPal(n);
+  return { border: p.main, col: p.main, bg: '#0a0a0a', glow: p.main };
+}
+
+function addHistory(nums) {
+  drawHistory.unshift(nums);
+  if (drawHistory.length>5) drawHistory.pop();
+  const histEl  = document.getElementById('history');
+  const histList= document.getElementById('historyList');
+  histEl.classList.add('show');
+  histList.innerHTML='';
+
+  drawHistory.forEach((row, idx) => {
+    const rowEl = document.createElement('div');
+    rowEl.className = 'history-row';
+
+    // 인덱스
+    const lbl = document.createElement('span');
+    lbl.className = 'history-idx';
+    lbl.textContent = `#${idx+1}`;
+    rowEl.appendChild(lbl);
+
+    // 번호 태그들
+    const numsWrap = document.createElement('div');
+    numsWrap.className = 'history-nums';
+    row.forEach(n => {
+      const s = getNumStyle(n);
+      const tag = document.createElement('div');
+      tag.className = 'hist-num';
+      tag.textContent = n;
+      tag.style.setProperty('--border', s.border);
+      tag.style.setProperty('--col',    s.col);
+      tag.style.setProperty('--bg3',    s.bg);
+      numsWrap.appendChild(tag);
+    });
+    rowEl.appendChild(numsWrap);
+
+    // 확대 버튼
+    const expandBtn = document.createElement('div');
+    expandBtn.className = 'hist-expand-btn';
+    expandBtn.textContent = '▶';
+    expandBtn.title = '크게 보기';
+    rowEl.appendChild(expandBtn);
+
+    // 클릭 → 오버레이
+    rowEl.addEventListener('click', () => openExpand(row, idx+1));
+    histList.appendChild(rowEl);
+  });
+}
+
+function openExpand(nums, idx) {
+  const overlay  = document.getElementById('expandOverlay');
+  const title    = document.getElementById('expandTitle');
+  const numsArea = document.getElementById('expandNums');
+  title.textContent = `▶ PLAY #${idx}`;
+  numsArea.innerHTML = '';
+  nums.forEach(n => {
+    const s = getNumStyle(n);
+    const el = document.createElement('div');
+    el.className = 'expand-num';
+    el.textContent = n;
+    el.style.setProperty('--border', s.border);
+    el.style.setProperty('--col',    s.col);
+    el.style.setProperty('--bg3',    s.bg);
+    el.style.setProperty('--glow',   s.glow + '66');
+    numsArea.appendChild(el);
+  });
+  overlay.classList.add('show');
+}
+
+function closeExpand(e) {
+  if (e.target === document.getElementById('expandOverlay'))
+    document.getElementById('expandOverlay').classList.remove('show');
+}
+function closeExpandBtn() {
+  document.getElementById('expandOverlay').classList.remove('show');
+}
+
+window.addEventListener('load', resizeCanvas);
+window.addEventListener('resize', ()=>{ if(!isDrawing) resizeCanvas(); });
+</script>
+</body>
+</html>
