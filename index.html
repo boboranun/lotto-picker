@@ -93,20 +93,20 @@ position:relative; z-index:1;
 .hud-bar {
 width:100%;
 background: #000;
-border: 4px solid var(–cyan);
-box-shadow: 0 0 0 4px #000, 0 0 0 8px var(–cyan), 0 0 20px var(–cyan);
+border: 4px solid #00d4ff;
+box-shadow: 0 0 0 4px #000, 0 0 0 8px #00d4ff, 0 0 20px #00d4ff;
 padding: 8px 12px;
 display: flex; align-items:center; justify-content:space-between;
 }
 .hud-lives { display:flex; gap:6px; }
-.hud-heart { font-size:.6rem; color:var(–pink2); }
-.hud-level { font-size:.5rem; color:var(–yellow); }
-.hud-score { font-size:.45rem; color:var(–green); text-align:right; }
+.hud-heart { font-size:.6rem; color:#ff2d78; }
+.hud-level { font-size:.5rem; color:#ffe135; }
+.hud-score { font-size:.45rem; color:#39ff14; text-align:right; }
 
 /* ── 아케이드 타이틀 패널 ── */
 .title-panel {
 width:100%;
-background: var(–pink);
+background: #ff6b9d;
 border: 4px solid #000;
 box-shadow: 4px 4px 0 #000, 0 0 0 4px #000, 0 0 20px rgba(255,107,157,0.5);
 padding: 12px 8px 10px;
@@ -115,7 +115,7 @@ position:relative;
 }
 .title-panel::before, .title-panel::after {
 content:‘★’; position:absolute; top:50%; transform:translateY(-50%);
-color:var(–yellow); font-size:.9rem;
+color:#ffe135; font-size:.9rem;
 }
 .title-panel::before { left:10px; }
 .title-panel::after  { right:10px; }
@@ -126,7 +126,7 @@ text-shadow: 3px 3px 0 #000, -1px -1px 0 #000;
 line-height:1.6;
 letter-spacing:1px;
 }
-.title-main span { color:var(–yellow); }
+.title-main span { color:#ffe135; }
 .title-sub {
 font-size:.4rem; color:rgba(255,255,255,0.7); margin-top:4px;
 letter-spacing:3px;
@@ -136,15 +136,15 @@ letter-spacing:3px;
 .arcade-frame {
 width:100%;
 background: #000;
-border: 4px solid var(–pink);
-box-shadow: 0 0 0 4px #000, 0 0 0 8px var(–pink), 6px 6px 0 #000,
+border: 4px solid #ff6b9d;
+box-shadow: 0 0 0 4px #000, 0 0 0 8px #ff6b9d, 6px 6px 0 #000,
 0 0 30px rgba(255,107,157,0.3);
 position:relative; overflow:hidden;
 }
 
 /* 창 헤더 (윈도우 98 스타일) */
 .arcade-titlebar {
-background: linear-gradient(90deg, var(–cyan2), var(–cyan));
+background: linear-gradient(90deg, #00a8cc, #00d4ff);
 padding: 5px 8px;
 display:flex; align-items:center; justify-content:space-between;
 border-bottom:3px solid #000;
@@ -177,7 +177,7 @@ gap:10px; transition:opacity .3s;
 }
 .canvas-idle.hidden { opacity:0; pointer-events:none; }
 .blink-txt {
-font-size:.55rem; color:var(–yellow);
+font-size:.55rem; color:#ffe135;
 animation:blink 1s step-end infinite;
 }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
@@ -190,15 +190,15 @@ position:absolute; bottom:12px; left:12px; right:12px;
 display:none;
 }
 .loading-bar-wrap.show { display:block; }
-.loading-label { font-size:.38rem; color:var(–cyan); margin-bottom:4px; }
+.loading-label { font-size:.38rem; color:#00d4ff; margin-bottom:4px; }
 .loading-track {
 height:10px; background:#111;
-border:2px solid var(–cyan);
-box-shadow:0 0 8px var(–cyan);
+border:2px solid #00d4ff;
+box-shadow:0 0 8px #00d4ff;
 }
 .loading-fill {
-height:100%; background:var(–cyan);
-box-shadow:0 0 6px var(–cyan);
+height:100%; background:#00d4ff;
+box-shadow:0 0 6px #00d4ff;
 width:0%; transition:none;
 }
 
@@ -210,13 +210,13 @@ padding: 8px 12px;
 display:flex; align-items:center; justify-content:space-between;
 }
 .status-screen {
-background:#000; border:2px solid var(–green);
+background:#000; border:2px solid #39ff14;
 padding:4px 10px; font-size:.38rem;
-box-shadow:0 0 8px var(–green);
+box-shadow:0 0 8px #39ff14;
 transition:color .3s;
 }
 .insert-coin {
-font-size:.38rem; color:var(–yellow);
+font-size:.38rem; color:#ffe135;
 animation:blink 1.2s step-end infinite;
 letter-spacing:1px;
 }
@@ -224,18 +224,19 @@ letter-spacing:1px;
 /* ── 결과 카드 ── */
 .result-card {
 width:100%;
-background: #000;
-border:4px solid var(–yellow);
-box-shadow:0 0 0 4px #000, 0 0 0 8px var(–yellow), 4px 4px 0 #000,
+background: #000 !important;
+border:4px solid #ffe135;
+box-shadow:0 0 0 4px #000, 0 0 0 8px #ffe135, 4px 4px 0 #000,
 0 0 20px rgba(255,225,53,0.3);
 padding:14px 10px 16px;
 position:relative;
 }
 .result-tag {
 position:absolute; top:-14px; left:50%; transform:translateX(-50%);
-background:var(–yellow); border:3px solid #000;
+background:#ffe135; border:3px solid #000;
 font-size:.38rem; color:#000; padding:3px 12px;
 box-shadow:2px 2px 0 #000; white-space:nowrap; letter-spacing:1px;
+font-family:‘Press Start 2P’,‘Courier New’,monospace;
 }
 
 /* 결과 공들 한 줄 */
@@ -243,6 +244,7 @@ box-shadow:2px 2px 0 #000; white-space:nowrap; letter-spacing:1px;
 display:flex; flex-wrap:nowrap; gap:6px;
 justify-content:center; align-items:center;
 min-height:70px;
+background: #000;
 }
 .lotto-ball-wrap {
 flex-shrink:0; width:56px; height:56px;
@@ -256,7 +258,7 @@ transition:transform .4s steps(6,end), opacity .1s;
 position:absolute; inset:0;
 display:flex; align-items:center; justify-content:center;
 font-size:.75rem; font-weight:900; pointer-events:none;
-padding-top:2px; font-family:‘Press Start 2P’,monospace;
+padding-top:2px; font-family:‘Press Start 2P’,‘Courier New’,monospace;
 text-shadow:1px 1px 0 rgba(0,0,0,0.5);
 }
 
@@ -266,13 +268,14 @@ width:100%; display:flex; gap:8px;
 }
 .draw-btn {
 flex:1; padding:16px 0;
-background: var(–pink);
+background: #ff6b9d !important;
+-webkit-appearance: none;
+appearance: none;
 border:0; outline:none; cursor:pointer;
-font-family:‘Press Start 2P’,monospace;
-font-size:.65rem; color:#fff;
+font-family:‘Press Start 2P’,‘Courier New’,monospace;
+font-size:.65rem; color:#fff !important;
 letter-spacing:1px;
 position:relative;
-/* 픽셀 버튼 그림자 */
 box-shadow:
 4px 0 0 #000, -4px 0 0 #000,
 0 4px 0 #000, 0 -4px 0 #000,
@@ -282,7 +285,7 @@ box-shadow:
 transition:transform .08s steps(2,end), box-shadow .08s steps(2,end);
 }
 .draw-btn:hover:not(:disabled) {
-background:var(–pink2);
+background:#ff2d78 !important;
 box-shadow:
 4px 0 0 #000, -4px 0 0 #000,
 0 4px 0 #000, 0 -4px 0 #000,
@@ -308,8 +311,8 @@ font-size:1rem;
 
 /* ── 결과 메시지 ── */
 .result-msg {
-font-size:.42rem; color:var(–green);
-text-shadow:0 0 8px var(–green);
+font-size:.42rem; color:#39ff14;
+text-shadow:0 0 8px #39ff14;
 opacity:0; transition:opacity .3s;
 text-align:center; letter-spacing:1px;
 animation:blink 1.5s step-end infinite;
@@ -319,12 +322,12 @@ animation:blink 1.5s step-end infinite;
 /* ── 히스토리 ── */
 .history {
 width:100%; background:#000;
-border:3px solid var(–purple);
+border:3px solid #c77dff;
 box-shadow:0 0 0 3px #000, 0 0 10px rgba(199,125,255,0.3);
 padding:10px 12px; display:none;
 }
 .history.show { display:block; }
-.history-title { font-size:.38rem; color:var(–purple); margin-bottom:8px; letter-spacing:1px; }
+.history-title { font-size:.38rem; color:#c77dff; margin-bottom:8px; letter-spacing:1px; }
 
 .history-row {
 display:flex; align-items:center;
@@ -335,7 +338,7 @@ border:2px solid transparent;
 transition:border-color .1s steps(2,end);
 }
 .history-row:hover { border-color:rgba(199,125,255,0.4); }
-.history-row.expanded { border-color:var(–purple); background:rgba(199,125,255,0.07); }
+.history-row.expanded { border-color:#c77dff; background:rgba(199,125,255,0.07); }
 
 .history-idx { font-size:.32rem; color:#666; min-width:22px; flex-shrink:0; }
 
@@ -356,9 +359,9 @@ image-rendering:pixelated;
 
 /* 펼치기 버튼 */
 .hist-expand-btn {
-font-size:.3rem; color:var(–purple);
+font-size:.3rem; color:#c77dff;
 flex-shrink:0; padding:2px 4px;
-border:2px solid var(–purple);
+border:2px solid #c77dff;
 box-shadow:1px 1px 0 #000;
 animation: none;
 letter-spacing:0;
@@ -574,7 +577,7 @@ animation:pxFall var(–pf,.8s) steps(8,end) forwards;
 
 <!-- 하단 패널 -->
 <div class="machine-panel">
-  <div class="status-screen" id="statusScreen" style="color:var(--green);">READY</div>
+  <div class="status-screen" id="statusScreen" style="color:#39ff14;">READY</div>
   <div class="insert-coin">★ INSERT COIN ★</div>
 </div>
 ```
