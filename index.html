@@ -548,6 +548,44 @@ body {
   }
 }
 
+
+.draw-btn.hot-btn {
+  background: #c77dff !important;
+  color: #fff !important;
+  box-shadow:
+    4px 0 0 #000, -4px 0 0 #000,
+    0 4px 0 #000, 0 -4px 0 #000,
+    4px 4px 0 #000, -4px 4px 0 #000,
+    4px -4px 0 #000, -4px -4px 0 #000,
+    0 6px 0 #6030a8, 0 0 20px rgba(199,125,255,0.4);
+}
+.draw-btn.hot-btn:hover:not(:disabled) {
+  background:#d499ff !important;
+  box-shadow:
+    4px 0 0 #000, -4px 0 0 #000,
+    0 4px 0 #000, 0 -4px 0 #000,
+    4px 4px 0 #000, -4px 4px 0 #000,
+    4px -4px 0 #000, -4px -4px 0 #000,
+    0 8px 0 #6030a8, 0 0 30px rgba(199,125,255,0.6);
+}
+.draw-btn.hot-btn::before {
+  content:'🎲';
+}
+.btn-row .draw-btn {
+  min-width: 0;
+}
+@media (max-width: 390px) {
+  .btn-row {
+    gap: 7px;
+  }
+  .draw-btn {
+    font-size: .5rem;
+  }
+  .draw-btn::before {
+    display: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -632,7 +670,8 @@ body {
 
   <!-- 뽑기 버튼 -->
   <div class="btn-row">
-    <button class="draw-btn" id="drawBtn" onclick="startDraw()">START!</button>
+    <button class="draw-btn" id="drawBtn" onclick="startDraw('random')">START!</button>
+    <button class="draw-btn hot-btn" id="hotBtn" onclick="startDraw('hot')">HOT NUMBER</button>
   </div>
 
   <!-- 저장 버튼 -->
@@ -644,7 +683,7 @@ body {
     <div id="historyList"></div>
   </div>
 
-  <div class="hint">* 1~45 · RANDOM 6 NUMBERS *</div>
+  <div class="hint">* START = RANDOM · HOT NUMBER = 자주 나온 번호 위주 · FOR FUN *</div>
 
 </div>
 
@@ -1058,11 +1097,50 @@ function updateHiScore(nums) {
 /* ── 뽑기 로직 ── */
 let isDrawing = false, drawHistory = [];
 
-function startDraw() {
+
+/* ── HOT NUMBER: 인기번호 + 랜덤 섞기 ── */
+/* 과거 출현 빈도가 높다고 알려진 숫자 느낌의 샘플값.
+   실제 서비스에서는 최신 회차 데이터를 넣어 교체하면 됨. */
+const HOT_NUMBERS = [3, 7, 11, 12, 14, 17, 18, 21, 27, 33, 34, 37, 40, 42, 44];
+
+function makeRandomNums() {
+  const nums = [];
+  while (nums.length < 6) {
+    const n = Math.floor(Math.random()*45)+1;
+    if (!nums.includes(n)) nums.push(n);
+  }
+  return nums.sort((a,b)=>a-b);
+}
+
+function makeHotNumberNums() {
+  const nums = [];
+  const weightedPool = [];
+
+  // 자주 나온 번호 후보는 더 자주 뽑히도록 가중치 부여
+  for (let n = 1; n <= 45; n++) {
+    weightedPool.push(n);
+
+    if (HOT_NUMBERS.includes(n)) {
+      weightedPool.push(n);
+      weightedPool.push(n);
+      weightedPool.push(n);
+    }
+  }
+
+  while (nums.length < 6) {
+    const n = weightedPool[Math.floor(Math.random() * weightedPool.length)];
+    if (!nums.includes(n)) nums.push(n);
+  }
+
+  return nums.sort((a,b)=>a-b);
+}
+
+function startDraw(mode = 'random') {
   if (isDrawing) return;
   isDrawing = true;
 
   const btn       = document.getElementById('drawBtn');
+  const hotBtn    = document.getElementById('hotBtn');
   const resultsEl = document.getElementById('results');
   const resultMsg = document.getElementById('resultMsg');
   const statusSc  = document.getElementById('statusScreen');
@@ -1074,9 +1152,11 @@ function startDraw() {
   resultMsg.classList.remove('show');
   document.getElementById('saveBtn').classList.remove('show');
   btn.disabled = true;
-  btn.textContent = 'LOADING...';
+  if (hotBtn) hotBtn.disabled = true;
+  btn.textContent = mode === 'hot' ? 'HOT PICK...' : 'LOADING...';
+  if (hotBtn) hotBtn.textContent = mode === 'hot' ? 'HOT PICK...' : 'HOT NUMBER';
 
-  statusSc.textContent = 'SPINNING...';
+  statusSc.textContent = mode === 'hot' ? 'HOT NUMBER...' : 'SPINNING...';
   statusSc.style.color = '#ff6b9d';
 
   // 로딩바 애니메이션
@@ -1099,12 +1179,7 @@ function startDraw() {
   animId = requestAnimationFrame(animLoop);
 
   // 번호 생성
-  const nums = [];
-  while (nums.length < 6) {
-    const n = Math.floor(Math.random()*45)+1;
-    if (!nums.includes(n)) nums.push(n);
-  }
-  nums.sort((a,b)=>a-b);
+  const nums = mode === 'hot' ? makeHotNumberNums() : makeRandomNums();
 
   setTimeout(()=>{ phase = 'slowdown'; loadWrap.classList.remove('show'); }, 2600);
 
@@ -1112,7 +1187,7 @@ function startDraw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
     idle.classList.remove('hidden');
     idle.querySelector('.press-ico').textContent = '🎉';
-    idle.querySelector('.blink-txt').textContent = 'NUMBER GET!';
+    idle.querySelector('.blink-txt').textContent = mode === 'hot' ? 'HOT NUMBER GET!' : 'NUMBER GET!';
     statusSc.textContent = 'COMPLETE!';
     statusSc.style.color = '#39ff14';
 
@@ -1141,7 +1216,9 @@ function startDraw() {
           document.getElementById('saveBtn').classList.add('show');
           isDrawing = false;
           btn.disabled = false;
+          if (hotBtn) hotBtn.disabled = false;
           btn.textContent = 'RETRY!';
+          if (hotBtn) hotBtn.textContent = 'HOT NUMBER';
           updateHiScore(nums);
           addHistory(nums);
           setTimeout(()=>{
