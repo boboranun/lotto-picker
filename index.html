@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -23,83 +23,83 @@
 <style>
 
 :root {
-–bg:      #1a1a2e;
-–bg2:     #16213e;
-–pink:    #ff6b9d;
-–pink2:   #ff2d78;
-–cyan:    #00d4ff;
-–cyan2:   #00a8cc;
-–yellow:  #ffe135;
-–green:   #39ff14;
-–purple:  #c77dff;
-–orange:  #ff9500;
-–cream:   #f5e6c8;
-–dark:    #0d0d1a;
+  --bg:      #1a1a2e;
+  --bg2:     #16213e;
+  --pink:    #ff6b9d;
+  --pink2:   #ff2d78;
+  --cyan:    #00d4ff;
+  --cyan2:   #00a8cc;
+  --yellow:  #ffe135;
+  --green:   #39ff14;
+  --purple:  #c77dff;
+  --orange:  #ff9500;
+  --cream:   #f5e6c8;
+  --dark:    #0d0d1a;
 }
 
-- { margin:0; padding:0; box-sizing:border-box; image-rendering:pixelated; }
+* { margin:0; padding:0; box-sizing:border-box; image-rendering:pixelated; }
 
 html { background-color: #1a1a2e; }
 
 body {
-background-color: #1a1a2e;
-background-image:
-linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
-background-size: 32px 32px;
-background-attachment: fixed;
-min-height: 100vh;
-font-family: ‘Press Start 2P’, ‘Courier New’, monospace;
-display: flex; flex-direction: column; align-items: center;
-overflow-x: hidden;
-padding-bottom: 40px;
-color: white;
+  background-color: #1a1a2e;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+  min-height: 100vh;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  display: flex; flex-direction: column; align-items: center;
+  overflow-x: hidden;
+  padding-bottom: 40px;
+  color: white;
 }
 
 /* ── 스캔라인 오버레이 ── */
 body::after {
-content:’’;
-position:fixed; inset:0;
-background: repeating-linear-gradient(
-0deg, transparent, transparent 2px,
-rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
-);
-pointer-events:none; z-index:999;
+  content:'';
+  position:fixed; inset:0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+  );
+  pointer-events:none; z-index:999;
 }
 
 /* ── 픽셀 박스 (CSS 픽셀 테두리) ── */
 .px-box {
-image-rendering: pixelated;
-position: relative;
+  image-rendering: pixelated;
+  position: relative;
 }
 .px-box::before {
-content:’’; position:absolute;
-inset:-4px; z-index:-1;
-background: var(–border-col, #fff);
-clip-path: polygon(
-4px 0%, calc(100% - 4px) 0%,
-100% 4px, 100% calc(100% - 4px),
-calc(100% - 4px) 100%, 4px 100%,
-0% calc(100% - 4px), 0% 4px
-);
+  content:''; position:absolute;
+  inset:-4px; z-index:-1;
+  background: var(--border-col, #fff);
+  clip-path: polygon(
+    4px 0%, calc(100% - 4px) 0%,
+    100% 4px, 100% calc(100% - 4px),
+    calc(100% - 4px) 100%, 4px 100%,
+    0% calc(100% - 4px), 0% 4px
+  );
 }
 
 /* ── 메인 랩 ── */
 .wrap {
-width:100%; max-width:420px;
-display:flex; flex-direction:column; align-items:center;
-padding:16px 12px 0; gap:12px;
-position:relative; z-index:1;
+  width:100%; max-width:420px;
+  display:flex; flex-direction:column; align-items:center;
+  padding:16px 12px 0; gap:12px;
+  position:relative; z-index:1;
 }
 
 /* ── 상단 HUD 바 ── */
 .hud-bar {
-width:100%;
-background: #000;
-border: 4px solid #00d4ff;
-box-shadow: 0 0 0 4px #000, 0 0 0 8px #00d4ff, 0 0 20px #00d4ff;
-padding: 8px 12px;
-display: flex; align-items:center; justify-content:space-between;
+  width:100%;
+  background: #000;
+  border: 4px solid #00d4ff;
+  box-shadow: 0 0 0 4px #000, 0 0 0 8px #00d4ff, 0 0 20px #00d4ff;
+  padding: 8px 12px;
+  display: flex; align-items:center; justify-content:space-between;
 }
 .hud-lives { display:flex; gap:6px; }
 .hud-heart { font-size:.6rem; color:#ff2d78; }
@@ -108,56 +108,56 @@ display: flex; align-items:center; justify-content:space-between;
 
 /* ── 아케이드 타이틀 패널 ── */
 .title-panel {
-width:100%;
-background: #ff6b9d;
-border: 4px solid #000;
-box-shadow: 4px 4px 0 #000, 0 0 0 4px #000, 0 0 20px rgba(255,107,157,0.5);
-padding: 12px 8px 10px;
-text-align:center;
-position:relative;
+  width:100%;
+  background: #ff6b9d;
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0 #000, 0 0 0 4px #000, 0 0 20px rgba(255,107,157,0.5);
+  padding: 12px 8px 10px;
+  text-align:center;
+  position:relative;
 }
 .title-panel::before, .title-panel::after {
-content:‘★’; position:absolute; top:50%; transform:translateY(-50%);
-color:#ffe135; font-size:.9rem;
+  content:'★'; position:absolute; top:50%; transform:translateY(-50%);
+  color:#ffe135; font-size:.9rem;
 }
 .title-panel::before { left:10px; }
 .title-panel::after  { right:10px; }
 .title-main {
-font-size:clamp(.75rem,3.5vw,1rem);
-color:#fff;
-text-shadow: 3px 3px 0 #000, -1px -1px 0 #000;
-line-height:1.6;
-letter-spacing:1px;
+  font-size:clamp(.75rem,3.5vw,1rem);
+  color:#fff;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000;
+  line-height:1.6;
+  letter-spacing:1px;
 }
 .title-main span { color:#ffe135; }
 .title-sub {
-font-size:.4rem; color:rgba(255,255,255,0.7); margin-top:4px;
-letter-spacing:3px;
+  font-size:.4rem; color:rgba(255,255,255,0.7); margin-top:4px;
+  letter-spacing:3px;
 }
 
 /* ── 아케이드 기계 창 ── */
 .arcade-frame {
-width:100%;
-background: #000;
-border: 4px solid #ff6b9d;
-box-shadow: 0 0 0 4px #000, 0 0 0 8px #ff6b9d, 6px 6px 0 #000,
-0 0 30px rgba(255,107,157,0.3);
-position:relative; overflow:hidden;
+  width:100%;
+  background: #000;
+  border: 4px solid #ff6b9d;
+  box-shadow: 0 0 0 4px #000, 0 0 0 8px #ff6b9d, 6px 6px 0 #000,
+              0 0 30px rgba(255,107,157,0.3);
+  position:relative; overflow:hidden;
 }
 
 /* 창 헤더 (윈도우 98 스타일) */
 .arcade-titlebar {
-background: linear-gradient(90deg, #00a8cc, #00d4ff);
-padding: 5px 8px;
-display:flex; align-items:center; justify-content:space-between;
-border-bottom:3px solid #000;
+  background: linear-gradient(90deg, #00a8cc, #00d4ff);
+  padding: 5px 8px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:3px solid #000;
 }
 .atb-title { font-size:.42rem; color:#000; letter-spacing:1px; }
 .atb-btns  { display:flex; gap:3px; }
 .atb-btn   {
-width:14px; height:14px; border:2px solid #000;
-display:flex; align-items:center; justify-content:center;
-font-size:.35rem; cursor:pointer;
+  width:14px; height:14px; border:2px solid #000;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.35rem; cursor:pointer;
 }
 .atb-btn.red   { background:#ff5f57; }
 .atb-btn.yel   { background:#febc2e; }
@@ -165,23 +165,23 @@ font-size:.35rem; cursor:pointer;
 
 /* ── 캔버스 창 ── */
 .canvas-wrap {
-background:#000;
-border-bottom:3px solid #000;
-position:relative;
-height:200px; overflow:hidden;
+  background:#000;
+  border-bottom:3px solid #000;
+  position:relative;
+  height:200px; overflow:hidden;
 }
 #ballCanvas { display:block; width:100%; height:100%; }
 
 /* 창 안 대기 텍스트 */
 .canvas-idle {
-position:absolute; inset:0;
-display:flex; flex-direction:column; align-items:center; justify-content:center;
-gap:10px; transition:opacity .3s;
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; transition:opacity .3s;
 }
 .canvas-idle.hidden { opacity:0; pointer-events:none; }
 .blink-txt {
-font-size:.55rem; color:#ffe135;
-animation:blink 1s step-end infinite;
+  font-size:.55rem; color:#ffe135;
+  animation:blink 1s step-end infinite;
 }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
 .press-ico { font-size:1.8rem; animation:float 2s ease-in-out infinite; }
@@ -189,156 +189,156 @@ animation:blink 1s step-end infinite;
 
 /* 로딩바 (스피닝 중) */
 .loading-bar-wrap {
-position:absolute; bottom:12px; left:12px; right:12px;
-display:none;
+  position:absolute; bottom:12px; left:12px; right:12px;
+  display:none;
 }
 .loading-bar-wrap.show { display:block; }
 .loading-label { font-size:.38rem; color:#00d4ff; margin-bottom:4px; }
 .loading-track {
-height:10px; background:#111;
-border:2px solid #00d4ff;
-box-shadow:0 0 8px #00d4ff;
+  height:10px; background:#111;
+  border:2px solid #00d4ff;
+  box-shadow:0 0 8px #00d4ff;
 }
 .loading-fill {
-height:100%; background:#00d4ff;
-box-shadow:0 0 6px #00d4ff;
-width:0%; transition:none;
+  height:100%; background:#00d4ff;
+  box-shadow:0 0 6px #00d4ff;
+  width:0%; transition:none;
 }
 
 /* ── 기계 하단 패널 ── */
 .machine-panel {
-background: #16213e;
-border-top: 3px solid #000;
-padding: 8px 12px;
-display:flex; align-items:center; justify-content:space-between;
+  background: #16213e;
+  border-top: 3px solid #000;
+  padding: 8px 12px;
+  display:flex; align-items:center; justify-content:space-between;
 }
 .status-screen {
-background:#000; border:2px solid #39ff14;
-padding:4px 10px; font-size:.38rem;
-box-shadow:0 0 8px #39ff14;
-transition:color .3s;
+  background:#000; border:2px solid #39ff14;
+  padding:4px 10px; font-size:.38rem;
+  box-shadow:0 0 8px #39ff14;
+  transition:color .3s;
 }
 .insert-coin {
-font-size:.38rem; color:#ffe135;
-animation:blink 1.2s step-end infinite;
-letter-spacing:1px;
+  font-size:.38rem; color:#ffe135;
+  animation:blink 1.2s step-end infinite;
+  letter-spacing:1px;
 }
 
 /* ── 결과 카드 ── */
 .result-card {
-width:100%;
-background: #000 !important;
-border:4px solid #ffe135;
-box-shadow:0 0 0 4px #000, 0 0 0 8px #ffe135, 4px 4px 0 #000,
-0 0 20px rgba(255,225,53,0.3);
-padding:14px 10px 16px;
-position:relative;
+  width:100%;
+  background: #000 !important;
+  border:4px solid #ffe135;
+  box-shadow:0 0 0 4px #000, 0 0 0 8px #ffe135, 4px 4px 0 #000,
+             0 0 20px rgba(255,225,53,0.3);
+  padding:14px 10px 16px;
+  position:relative;
 }
 .result-tag {
-position:absolute; top:-14px; left:50%; transform:translateX(-50%);
-background:#ffe135; border:3px solid #000;
-font-size:.38rem; color:#000; padding:3px 12px;
-box-shadow:2px 2px 0 #000; white-space:nowrap; letter-spacing:1px;
-font-family:‘Press Start 2P’,‘Courier New’,monospace;
+  position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+  background:#ffe135; border:3px solid #000;
+  font-size:.38rem; color:#000; padding:3px 12px;
+  box-shadow:2px 2px 0 #000; white-space:nowrap; letter-spacing:1px;
+  font-family:'Press Start 2P','Courier New',monospace;
 }
 
 /* 결과 공들 한 줄 */
 .result-balls {
-display:flex; flex-wrap:nowrap; gap:6px;
-justify-content:center; align-items:center;
-min-height:70px;
-background: #000;
+  display:flex; flex-wrap:nowrap; gap:6px;
+  justify-content:center; align-items:center;
+  min-height:70px;
+  background: #000;
 }
 .lotto-ball-wrap {
-flex-shrink:0; width:56px; height:56px;
-opacity:0; transform:scale(0);
-transition:transform .4s steps(6,end), opacity .1s;
+  flex-shrink:0; width:56px; height:56px;
+  opacity:0; transform:scale(0);
+  transition:transform .4s steps(6,end), opacity .1s;
 }
 .lotto-ball-wrap.show { opacity:1; transform:scale(1); }
 .lotto-ball-inner { position:relative; width:56px; height:56px; }
 .lotto-ball-inner svg { display:block; image-rendering:pixelated; }
 .lotto-ball-num {
-position:absolute; inset:0;
-display:flex; align-items:center; justify-content:center;
-font-size:.75rem; font-weight:900; pointer-events:none;
-padding-top:2px; font-family:‘Press Start 2P’,‘Courier New’,monospace;
-text-shadow:1px 1px 0 rgba(0,0,0,0.5);
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.75rem; font-weight:900; pointer-events:none;
+  padding-top:2px; font-family:'Press Start 2P','Courier New',monospace;
+  text-shadow:1px 1px 0 rgba(0,0,0,0.5);
 }
 
 /* ── 뽑기 버튼 ── */
 .btn-row {
-width:100%; display:flex; gap:8px;
+  width:100%; display:flex; gap:8px;
 }
 .draw-btn {
-flex:1; padding:16px 0;
-background: #ff6b9d !important;
--webkit-appearance: none;
-appearance: none;
-border:0; outline:none; cursor:pointer;
-font-family:‘Press Start 2P’,‘Courier New’,monospace;
-font-size:.65rem; color:#fff !important;
-letter-spacing:1px;
-position:relative;
-box-shadow:
-4px 0 0 #000, -4px 0 0 #000,
-0 4px 0 #000, 0 -4px 0 #000,
-4px 4px 0 #000, -4px 4px 0 #000,
-4px -4px 0 #000, -4px -4px 0 #000,
-0 6px 0 #9b1a40, 0 0 20px rgba(255,107,157,0.4);
-transition:transform .08s steps(2,end), box-shadow .08s steps(2,end);
+  flex:1; padding:16px 0;
+  background: #ff6b9d !important;
+  -webkit-appearance: none;
+  appearance: none;
+  border:0; outline:none; cursor:pointer;
+  font-family:'Press Start 2P','Courier New',monospace;
+  font-size:.65rem; color:#fff !important;
+  letter-spacing:1px;
+  position:relative;
+  box-shadow:
+    4px 0 0 #000, -4px 0 0 #000,
+    0 4px 0 #000, 0 -4px 0 #000,
+    4px 4px 0 #000, -4px 4px 0 #000,
+    4px -4px 0 #000, -4px -4px 0 #000,
+    0 6px 0 #9b1a40, 0 0 20px rgba(255,107,157,0.4);
+  transition:transform .08s steps(2,end), box-shadow .08s steps(2,end);
 }
 .draw-btn:hover:not(:disabled) {
-background:#ff2d78 !important;
-box-shadow:
-4px 0 0 #000, -4px 0 0 #000,
-0 4px 0 #000, 0 -4px 0 #000,
-4px 4px 0 #000, -4px 4px 0 #000,
-4px -4px 0 #000, -4px -4px 0 #000,
-0 8px 0 #9b1a40, 0 0 30px rgba(255,45,120,0.6);
-transform:translateY(-2px);
+  background:#ff2d78 !important;
+  box-shadow:
+    4px 0 0 #000, -4px 0 0 #000,
+    0 4px 0 #000, 0 -4px 0 #000,
+    4px 4px 0 #000, -4px 4px 0 #000,
+    4px -4px 0 #000, -4px -4px 0 #000,
+    0 8px 0 #9b1a40, 0 0 30px rgba(255,45,120,0.6);
+  transform:translateY(-2px);
 }
 .draw-btn:active:not(:disabled) {
-transform:translateY(4px);
-box-shadow:
-4px 0 0 #000, -4px 0 0 #000,
-0 4px 0 #000, 0 -4px 0 #000,
-4px 4px 0 #000, -4px 4px 0 #000,
-4px -4px 0 #000, -4px -4px 0 #000,
-0 2px 0 #9b1a40;
+  transform:translateY(4px);
+  box-shadow:
+    4px 0 0 #000, -4px 0 0 #000,
+    0 4px 0 #000, 0 -4px 0 #000,
+    4px 4px 0 #000, -4px 4px 0 #000,
+    4px -4px 0 #000, -4px -4px 0 #000,
+    0 2px 0 #9b1a40;
 }
 .draw-btn:disabled { opacity:.45; cursor:not-allowed; transform:none; }
 .draw-btn::before {
-content:‘🕹️’; position:absolute; left:12px; top:50%; transform:translateY(-50%);
-font-size:1rem;
+  content:'🕹️'; position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  font-size:1rem;
 }
 
 /* ── 결과 메시지 ── */
 .result-msg {
-font-size:.42rem; color:#39ff14;
-text-shadow:0 0 8px #39ff14;
-opacity:0; transition:opacity .3s;
-text-align:center; letter-spacing:1px;
-animation:blink 1.5s step-end infinite;
+  font-size:.42rem; color:#39ff14;
+  text-shadow:0 0 8px #39ff14;
+  opacity:0; transition:opacity .3s;
+  text-align:center; letter-spacing:1px;
+  animation:blink 1.5s step-end infinite;
 }
 .result-msg.show { opacity:1; }
 
 /* ── 히스토리 ── */
 .history {
-width:100%; background:#000;
-border:3px solid #c77dff;
-box-shadow:0 0 0 3px #000, 0 0 10px rgba(199,125,255,0.3);
-padding:10px 12px; display:none;
+  width:100%; background:#000;
+  border:3px solid #c77dff;
+  box-shadow:0 0 0 3px #000, 0 0 10px rgba(199,125,255,0.3);
+  padding:10px 12px; display:none;
 }
 .history.show { display:block; }
 .history-title { font-size:.38rem; color:#c77dff; margin-bottom:8px; letter-spacing:1px; }
 
 .history-row {
-display:flex; align-items:center;
-margin-bottom:6px; gap:6px;
-cursor:pointer;
-padding:4px 6px;
-border:2px solid transparent;
-transition:border-color .1s steps(2,end);
+  display:flex; align-items:center;
+  margin-bottom:6px; gap:6px;
+  cursor:pointer;
+  padding:4px 6px;
+  border:2px solid transparent;
+  transition:border-color .1s steps(2,end);
 }
 .history-row:hover { border-color:rgba(199,125,255,0.4); }
 .history-row.expanded { border-color:#c77dff; background:rgba(199,125,255,0.07); }
@@ -348,72 +348,72 @@ transition:border-color .1s steps(2,end);
 /* 번호 태그들 (공 없이 숫자만) */
 .history-nums { display:flex; gap:5px; align-items:center; flex:1; flex-wrap:nowrap; }
 .hist-num {
-font-size:.38rem;
-padding:3px 5px;
-border:2px solid var(–border, #555);
-color: var(–col, #ccc);
-background: var(–bg3, #111);
-box-shadow: 2px 2px 0 #000;
-min-width:28px; text-align:center;
-flex-shrink:0;
-letter-spacing:0;
-image-rendering:pixelated;
+  font-size:.38rem;
+  padding:3px 5px;
+  border:2px solid var(--border, #555);
+  color: var(--col, #ccc);
+  background: var(--bg3, #111);
+  box-shadow: 2px 2px 0 #000;
+  min-width:28px; text-align:center;
+  flex-shrink:0;
+  letter-spacing:0;
+  image-rendering:pixelated;
 }
 
 /* 펼치기 버튼 */
 .hist-expand-btn {
-font-size:.3rem; color:#c77dff;
-flex-shrink:0; padding:2px 4px;
-border:2px solid #c77dff;
-box-shadow:1px 1px 0 #000;
-animation: none;
-letter-spacing:0;
+  font-size:.3rem; color:#c77dff;
+  flex-shrink:0; padding:2px 4px;
+  border:2px solid #c77dff;
+  box-shadow:1px 1px 0 #000;
+  animation: none;
+  letter-spacing:0;
 }
 
 /* 확대 오버레이 */
 .expand-overlay {
-position:fixed; inset:0; z-index:500;
-background:rgba(0,0,0,0.88);
-display:flex; align-items:center; justify-content:center;
-opacity:0; pointer-events:none;
-transition:opacity .15s steps(3,end);
+  position:fixed; inset:0; z-index:500;
+  background:rgba(0,0,0,0.88);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity .15s steps(3,end);
 }
 .expand-overlay.show { opacity:1; pointer-events:all; }
 .expand-box {
-background:#000; border:4px solid #c77dff;
-box-shadow:0 0 0 4px #000, 0 0 0 8px #c77dff, 0 0 40px rgba(199,125,255,0.5);
-padding:24px 20px 20px;
-max-width:360px; width:90%;
-position:relative;
-font-family:‘Press Start 2P’,‘Courier New’,monospace;
+  background:#000; border:4px solid #c77dff;
+  box-shadow:0 0 0 4px #000, 0 0 0 8px #c77dff, 0 0 40px rgba(199,125,255,0.5);
+  padding:24px 20px 20px;
+  max-width:360px; width:90%;
+  position:relative;
+  font-family:'Press Start 2P','Courier New',monospace;
 }
 .expand-title {
-font-size:.4rem; color:#c77dff; margin-bottom:16px;
-text-align:center; letter-spacing:2px;
+  font-size:.4rem; color:#c77dff; margin-bottom:16px;
+  text-align:center; letter-spacing:2px;
 }
 .expand-nums {
-display:flex; flex-wrap:wrap; gap:10px;
-justify-content:center; margin-bottom:18px;
+  display:flex; flex-wrap:wrap; gap:10px;
+  justify-content:center; margin-bottom:18px;
 }
 .expand-num {
-width:52px; height:52px;
-display:flex; align-items:center; justify-content:center;
-font-size:.9rem;
-border:3px solid var(–border,#555);
-color:var(–col,#ccc);
-background:var(–bg3,#111);
-box-shadow:3px 3px 0 #000, 0 0 10px var(–glow,transparent);
-image-rendering:pixelated;
-font-family:‘Press Start 2P’,‘Courier New’,monospace;
+  width:52px; height:52px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.9rem;
+  border:3px solid var(--border,#555);
+  color:var(--col,#ccc);
+  background:var(--bg3,#111);
+  box-shadow:3px 3px 0 #000, 0 0 10px var(--glow,transparent);
+  image-rendering:pixelated;
+  font-family:'Press Start 2P','Courier New',monospace;
 }
 .expand-close {
-display:block; width:100%;
-padding:10px 0; background:#c77dff;
-border:0; cursor:pointer;
-font-family:‘Press Start 2P’,‘Courier New’,monospace;
-font-size:.42rem; color:#000;
-box-shadow:3px 3px 0 #000;
-letter-spacing:1px;
+  display:block; width:100%;
+  padding:10px 0; background:#c77dff;
+  border:0; cursor:pointer;
+  font-family:'Press Start 2P','Courier New',monospace;
+  font-size:.42rem; color:#000;
+  box-shadow:3px 3px 0 #000;
+  letter-spacing:1px;
 }
 .expand-close:hover { background:#d499ff; }
 
@@ -422,107 +422,145 @@ letter-spacing:1px;
 
 /* ── 저장 버튼 ── */
 .save-btn {
-width:100%; padding:14px 0;
-background: #000;
-border: 3px solid #ffe135;
-outline:none; cursor:pointer;
-font-family:‘Press Start 2P’,‘Courier New’,monospace;
-font-size:.55rem; color:#ffe135;
-letter-spacing:1px;
-display:none;
-box-shadow:
-4px 0 0 #000,-4px 0 0 #000,0 4px 0 #000,0 -4px 0 #000,
-4px 4px 0 #000,-4px 4px 0 #000,4px -4px 0 #000,-4px -4px 0 #000,
-0 6px 0 #7a6200, 0 0 20px rgba(255,225,53,0.3);
-transition:transform .08s steps(2,end), box-shadow .08s steps(2,end);
-position:relative; overflow:hidden;
+  width:100%; padding:14px 0;
+  background: #000;
+  border: 3px solid #ffe135;
+  outline:none; cursor:pointer;
+  font-family:'Press Start 2P','Courier New',monospace;
+  font-size:.55rem; color:#ffe135;
+  letter-spacing:1px;
+  display:none;
+  box-shadow:
+    4px 0 0 #000,-4px 0 0 #000,0 4px 0 #000,0 -4px 0 #000,
+    4px 4px 0 #000,-4px 4px 0 #000,4px -4px 0 #000,-4px -4px 0 #000,
+    0 6px 0 #7a6200, 0 0 20px rgba(255,225,53,0.3);
+  transition:transform .08s steps(2,end), box-shadow .08s steps(2,end);
+  position:relative; overflow:hidden;
 }
 .save-btn.show { display:block; }
 .save-btn::before {
-content:’’; position:absolute; top:0; left:0; right:0; height:44%;
-background:rgba(255,255,255,0.05); pointer-events:none;
+  content:''; position:absolute; top:0; left:0; right:0; height:44%;
+  background:rgba(255,255,255,0.05); pointer-events:none;
 }
 .save-btn:hover {
-background:#111; transform:translate(-2px,-2px);
-box-shadow:4px 0 0 #000,-4px 0 0 #000,0 4px 0 #000,0 -4px 0 #000,
-4px 4px 0 #000,-4px 4px 0 #000,4px -4px 0 #000,-4px -4px 0 #000,
-0 8px 0 #7a6200, 0 0 30px rgba(255,225,53,0.5);
+  background:#111; transform:translate(-2px,-2px);
+  box-shadow:4px 0 0 #000,-4px 0 0 #000,0 4px 0 #000,0 -4px 0 #000,
+    4px 4px 0 #000,-4px 4px 0 #000,4px -4px 0 #000,-4px -4px 0 #000,
+    0 8px 0 #7a6200, 0 0 30px rgba(255,225,53,0.5);
 }
 .save-btn:active {
-transform:translate(3px,3px);
-box-shadow:4px 0 0 #000,-4px 0 0 #000,0 4px 0 #000,0 -4px 0 #000,
-4px 4px 0 #000,-4px 4px 0 #000,4px -4px 0 #000,-4px -4px 0 #000,
-0 2px 0 #7a6200;
+  transform:translate(3px,3px);
+  box-shadow:4px 0 0 #000,-4px 0 0 #000,0 4px 0 #000,0 -4px 0 #000,
+    4px 4px 0 #000,-4px 4px 0 #000,4px -4px 0 #000,-4px -4px 0 #000,
+    0 2px 0 #7a6200;
 }
 
 /* 저장 토스트 */
 .save-toast {
-position:fixed; bottom:32px; left:50%; transform:translateX(-50%);
-background:#000; border:3px solid #ffe135;
-color:#ffe135; font-size:.38rem;
-padding:10px 18px; letter-spacing:1px;
-box-shadow:4px 4px 0 #000, 0 0 16px rgba(255,225,53,0.4);
-opacity:0; pointer-events:none; white-space:nowrap;
-transition:opacity .2s steps(3,end);
-z-index:1000;
-font-family:‘Press Start 2P’,‘Courier New’,monospace;
+  position:fixed; bottom:32px; left:50%; transform:translateX(-50%);
+  background:#000; border:3px solid #ffe135;
+  color:#ffe135; font-size:.38rem;
+  padding:10px 18px; letter-spacing:1px;
+  box-shadow:4px 4px 0 #000, 0 0 16px rgba(255,225,53,0.4);
+  opacity:0; pointer-events:none; white-space:nowrap;
+  transition:opacity .2s steps(3,end);
+  z-index:1000;
+  font-family:'Press Start 2P','Courier New',monospace;
 }
 .save-toast.show { opacity:1; }
 
 /* ── 픽셀 장식 별들 ── */
 .px-star {
-position:fixed; pointer-events:none;
-animation:starTwinkle var(–dur,2s) step-end infinite var(–del,0s);
-font-size:var(–fs,.6rem);
-z-index:0;
+  position:fixed; pointer-events:none;
+  animation:starTwinkle var(--dur,2s) step-end infinite var(--del,0s);
+  font-size:var(--fs,.6rem);
+  z-index:0;
 }
 @keyframes starTwinkle {
-0%,100%{opacity:1;} 33%{opacity:0;} 66%{opacity:.5;}
+  0%,100%{opacity:1;} 33%{opacity:0;} 66%{opacity:.5;}
 }
 
 /* ── 푸터 ── */
 .footer {
-width:100%; max-width:420px;
-display:flex; flex-direction:column; align-items:center; gap:8px;
-padding:14px 12px 0;
+  width:100%; max-width:420px;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  padding:14px 12px 0;
 }
 .footer-made { font-size:.32rem; color:#888; letter-spacing:1px; }
 .footer-link {
-font-size:.45rem; color:#00d4ff;
-text-decoration:none; letter-spacing:1px;
-text-shadow:0 0 8px #00d4ff;
-padding:6px 16px;
-border:3px solid #00d4ff;
-box-shadow:3px 3px 0 #000, 0 0 12px rgba(0,212,255,0.3);
-transition:transform .1s steps(2,end);
-font-family:‘Press Start 2P’,‘Courier New’,monospace;
+  font-size:.45rem; color:#00d4ff;
+  text-decoration:none; letter-spacing:1px;
+  text-shadow:0 0 8px #00d4ff;
+  padding:6px 16px;
+  border:3px solid #00d4ff;
+  box-shadow:3px 3px 0 #000, 0 0 12px rgba(0,212,255,0.3);
+  transition:transform .1s steps(2,end);
+  font-family:'Press Start 2P','Courier New',monospace;
 }
 .footer-link:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 #000; }
 .footer-sub { font-size:.3rem; color:#555; }
 
 /* ── 파티클 효과 ── */
 .particle {
-position:fixed; pointer-events:none; z-index:100;
-width:8px; height:8px;
-animation:pxFall var(–pf,.8s) steps(8,end) forwards;
+  position:fixed; pointer-events:none; z-index:100;
+  width:8px; height:8px;
+  animation:pxFall var(--pf,.8s) steps(8,end) forwards;
 }
 @keyframes pxFall {
-0%  { transform:translate(0,0) rotate(0deg); opacity:1; }
-100%{ transform:translate(var(–px,30px),var(–py,60px)) rotate(var(–pr,180deg)); opacity:0; }
+  0%  { transform:translate(0,0) rotate(0deg); opacity:1; }
+  100%{ transform:translate(var(--px,30px),var(--py,60px)) rotate(var(--pr,180deg)); opacity:0; }
 }
-</style>
 
+/* ─────────────────────────────────────────
+   모바일/웹 동일 화면 고정 패치
+   - 클로드 미리보기 기준 폭 420px을 하나의 스테이지로 고정
+   - 작은 화면에서는 통째로 축소
+   - 큰 화면에서는 더 이상 늘어나지 않음
+   ───────────────────────────────────────── */
+html, body {
+  width: 100%;
+  overflow-x: hidden !important;
+}
+
+body {
+  align-items: center !important;
+}
+
+.app-stage {
+  width: 420px;
+  max-width: 420px;
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.wrap,
+.footer {
+  width: 420px !important;
+  max-width: 420px !important;
+  min-width: 420px !important;
+  flex-shrink: 0;
+}
+
+@media (max-width: 420px) {
+  .wrap {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+</style>
 </head>
 <body>
 
 <!-- 픽셀 별 배경 -->
-
 <div id="bgStars"></div>
+
+<!-- 화면 폭이 달라도 클로드 미리보기처럼 같은 비율로 보이도록 고정 스테이지 -->
+<div class="app-stage" id="appStage">
 
 <div class="wrap">
 
   <!-- HUD 바 -->
-
   <div class="hud-bar">
     <div>
       <div class="hud-level">LV.01</div>
@@ -541,7 +579,6 @@ animation:pxFall var(–pf,.8s) steps(8,end) forwards;
   </div>
 
   <!-- 타이틀 -->
-
   <div class="title-panel">
     <div class="title-main">
       <span>LUCKY</span> LOTTO<br>
@@ -551,65 +588,57 @@ animation:pxFall var(–pf,.8s) steps(8,end) forwards;
   </div>
 
   <!-- 아케이드 기계 창 -->
-
   <div class="arcade-frame">
 
-```
-<!-- 타이틀바 (윈도우 스타일) -->
-<div class="arcade-titlebar">
-  <div class="atb-title">LOTTO_MACHINE.EXE</div>
-  <div class="atb-btns">
-    <div class="atb-btn grn">▪</div>
-    <div class="atb-btn yel">▪</div>
-    <div class="atb-btn red">✕</div>
-  </div>
-</div>
+    <!-- 타이틀바 (윈도우 스타일) -->
+    <div class="arcade-titlebar">
+      <div class="atb-title">LOTTO_MACHINE.EXE</div>
+      <div class="atb-btns">
+        <div class="atb-btn grn">▪</div>
+        <div class="atb-btn yel">▪</div>
+        <div class="atb-btn red">✕</div>
+      </div>
+    </div>
 
-<!-- 공 캔버스 -->
-<div class="canvas-wrap" id="canvasWrap">
-  <canvas id="ballCanvas"></canvas>
-  <div class="canvas-idle" id="canvasIdle">
-    <div class="press-ico">🎱</div>
-    <div class="blink-txt">PRESS START!</div>
-  </div>
-  <div class="loading-bar-wrap" id="loadingBarWrap">
-    <div class="loading-label">LOADING...</div>
-    <div class="loading-track"><div class="loading-fill" id="loadingFill"></div></div>
-  </div>
-</div>
+    <!-- 공 캔버스 -->
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="ballCanvas"></canvas>
+      <div class="canvas-idle" id="canvasIdle">
+        <div class="press-ico">🎱</div>
+        <div class="blink-txt">PRESS START!</div>
+      </div>
+      <div class="loading-bar-wrap" id="loadingBarWrap">
+        <div class="loading-label">LOADING...</div>
+        <div class="loading-track"><div class="loading-fill" id="loadingFill"></div></div>
+      </div>
+    </div>
 
-<!-- 하단 패널 -->
-<div class="machine-panel">
-  <div class="status-screen" id="statusScreen" style="color:#39ff14;">READY</div>
-  <div class="insert-coin">★ INSERT COIN ★</div>
-</div>
-```
+    <!-- 하단 패널 -->
+    <div class="machine-panel">
+      <div class="status-screen" id="statusScreen" style="color:#39ff14;">READY</div>
+      <div class="insert-coin">★ INSERT COIN ★</div>
+    </div>
 
   </div>
 
   <!-- 결과 카드 -->
-
   <div class="result-card">
     <div class="result-tag">♡ TODAY'S LUCKY NUMBER ♡</div>
     <div class="result-balls" id="results"></div>
   </div>
 
   <!-- 결과 메시지 -->
-
   <div class="result-msg" id="resultMsg">✦ LUCKY NUMBER GET! ✦</div>
 
   <!-- 뽑기 버튼 -->
-
   <div class="btn-row">
     <button class="draw-btn" id="drawBtn" onclick="startDraw()">START!</button>
   </div>
 
   <!-- 저장 버튼 -->
-
-<button class="save-btn" id="saveBtn" onclick="saveAsImage()">📷 SAVE IMAGE</button>
+  <button class="save-btn" id="saveBtn" onclick="saveAsImage()">📷 SAVE IMAGE</button>
 
   <!-- 히스토리 -->
-
   <div class="history" id="history">
     <div class="history-title">▶ PLAY HISTORY</div>
     <div id="historyList"></div>
@@ -620,11 +649,9 @@ animation:pxFall var(–pf,.8s) steps(8,end) forwards;
 </div>
 
 <!-- 저장 토스트 -->
-
 <div class="save-toast" id="saveToast">✓ IMAGE SAVED!</div>
 
 <!-- 확대 오버레이 -->
-
 <div class="expand-overlay" id="expandOverlay" onclick="closeExpand(event)">
   <div class="expand-box">
     <div class="expand-title" id="expandTitle">▶ PLAY HISTORY #1</div>
@@ -634,14 +661,39 @@ animation:pxFall var(–pf,.8s) steps(8,end) forwards;
 </div>
 
 <!-- 푸터 -->
-
 <div class="footer">
   <div class="footer-made">MADE WITH CLAUDE AI 🤖</div>
   <a class="footer-link" href="https://m.blog.naver.com/boyoum" target="_blank">▶ @BOBORANUN</a>
   <div class="footer-sub">POWERED BY CLAUDE SONNET · ANTHROPIC</div>
 </div>
 
+</div><!-- /appStage -->
+
 <script>
+
+/* ── 클로드 미리보기 비율 고정 스케일러 ── */
+(function lockClaudePreviewScale(){
+  const DESIGN_WIDTH = 420;
+  const SIDE_SAFE = 0;
+
+  function fitStage(){
+    const stage = document.getElementById('appStage');
+    if (!stage) return;
+
+    const available = Math.max(320, window.innerWidth - SIDE_SAFE);
+    const scale = Math.min(1, available / DESIGN_WIDTH);
+
+    stage.style.transform = `scale(${scale})`;
+    stage.style.marginBottom = `${Math.round(stage.offsetHeight * (scale - 1))}px`;
+  }
+
+  window.addEventListener('load', fitStage);
+  window.addEventListener('resize', fitStage);
+  window.addEventListener('orientationchange', fitStage);
+  setTimeout(fitStage, 100);
+  setTimeout(fitStage, 500);
+})();
+
 /* ── 배경 픽셀 별 ── */
 const bgStars = document.getElementById('bgStars');
 const starSyms = ['✦','★','◆','✶','♦','·'];
@@ -1364,6 +1416,5 @@ function showToast(msg) {
   setTimeout(()=> t.classList.remove('show'), 2200);
 }
 </script>
-
 </body>
 </html>
