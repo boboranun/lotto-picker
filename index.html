@@ -1240,15 +1240,29 @@ window.addEventListener('load', resizeCanvas);
 window.addEventListener('resize', ()=>{ if(!isDrawing) resizeCanvas(); });
 
 /* ── 이미지 저장 ── */
+
 function saveAsImage() {
   const btn = document.getElementById('saveBtn');
   btn.textContent = '⏳ SAVING...';
   btn.style.pointerEvents = 'none';
 
-  // 오프스크린 캔버스에 카드 직접 그리기
-  const W = 680, H = 340;
+  // 현재 결과 번호
+  const currentNums = [...document.querySelectorAll('.lotto-ball-wrap.show')].map(el => {
+    const numEl = el.querySelector('.lotto-ball-num');
+    return numEl ? parseInt(numEl.textContent) : null;
+  }).filter(Boolean);
+
+  // 히스토리 번호들 (화면에 보이는 순서 그대로)
+  const historyNums = Array.isArray(drawHistory) ? drawHistory.slice(0, 5) : [];
+
+  // 히스토리 개수에 따라 이미지 높이 늘리기
+  const historyBlockH = historyNums.length > 0 ? 42 + historyNums.length * 34 : 0;
+  const W = 680;
+  const H = 340 + historyBlockH;
+
   const oc = document.createElement('canvas');
-  oc.width = W; oc.height = H;
+  oc.width = W;
+  oc.height = H;
   const c = oc.getContext('2d');
 
   // ── 배경
@@ -1258,54 +1272,52 @@ function saveAsImage() {
   // 그리드
   c.strokeStyle = 'rgba(0,212,255,0.07)';
   c.lineWidth = 1;
-  for (let x=0; x<W; x+=24) { c.beginPath(); c.moveTo(x,0); c.lineTo(x,H); c.stroke(); }
-  for (let y=0; y<H; y+=24) { c.beginPath(); c.moveTo(0,y); c.lineTo(W,y); c.stroke(); }
-
-  // 스캔라인
-  for (let y=0; y<H; y+=4) {
-    c.fillStyle = 'rgba(0,0,0,0.10)';
-    c.fillRect(0, y+2, W, 2);
+  for (let x = 0; x < W; x += 32) {
+    c.beginPath();
+    c.moveTo(x, 0);
+    c.lineTo(x, H);
+    c.stroke();
+  }
+  for (let y = 0; y < H; y += 32) {
+    c.beginPath();
+    c.moveTo(0, y);
+    c.lineTo(W, y);
+    c.stroke();
   }
 
-  // ── 바깥 테두리 (이중)
-  c.strokeStyle = '#ff6b9d';
-  c.lineWidth = 4;
-  c.strokeRect(4, 4, W-8, H-8);
+  // 카드 박스
+  const cardX = 26, cardY = 26, cardW = W - 52, cardH = H - 52;
+  c.fillStyle = '#000';
+  c.fillRect(cardX, cardY, cardW, cardH);
+
+  c.strokeStyle = '#ffe135';
+  c.lineWidth = 6;
+  c.strokeRect(cardX, cardY, cardW, cardH);
+
   c.strokeStyle = '#000';
   c.lineWidth = 2;
-  c.strokeRect(10, 10, W-20, H-20);
-  c.strokeStyle = 'rgba(255,107,157,0.3)';
-  c.lineWidth = 1;
-  c.strokeRect(14, 14, W-28, H-28);
+  c.strokeRect(cardX - 6, cardY - 6, cardW + 12, cardH + 12);
 
-  // ── 코너 픽셀 장식
+  // 코너 픽셀
+  c.fillStyle = '#ffe135';
   const cornerSz = 8;
-  const corners = [[16,16],[W-16-cornerSz,16],[16,H-16-cornerSz],[W-16-cornerSz,H-16-cornerSz]];
-  corners.forEach(([cx,cy]) => {
-    c.fillStyle = '#ff6b9d';
+  [[cardX-6, cardY-6], [cardX+cardW-2, cardY-6], [cardX-6, cardY+cardH-2], [cardX+cardW-2, cardY+cardH-2]].forEach(([cx, cy]) => {
     c.fillRect(cx, cy, cornerSz, cornerSz);
   });
 
-  // ── 상단 타이틀
+  // 타이틀
   c.font = "bold 13px 'Press Start 2P', monospace";
   c.textAlign = 'center';
   c.fillStyle = '#000';
-  c.fillText('✦ TODAY\'S LUCKY NUMBER ✦', W/2+2, 52);
+  c.fillText("✦ TODAY'S LUCKY NUMBER ✦", W/2+2, 52);
   c.fillStyle = '#ffe135';
-  c.fillText('✦ TODAY\'S LUCKY NUMBER ✦', W/2, 50);
+  c.fillText("✦ TODAY'S LUCKY NUMBER ✦", W/2, 50);
 
-  // ── 날짜
   const now = new Date();
   const dateStr = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
   c.font = "9px 'Press Start 2P', monospace";
   c.fillStyle = 'rgba(255,225,53,0.45)';
   c.fillText(dateStr, W/2, 70);
-
-  // ── 번호 공들
-  const currentNums = [...document.querySelectorAll('.lotto-ball-wrap.show')].map(el => {
-    const numEl = el.querySelector('.lotto-ball-num');
-    return numEl ? parseInt(numEl.textContent) : null;
-  }).filter(Boolean);
 
   const PAL = [
     {main:'#ffe135',light:'#fff088',dark:'#9a8000',text:'#5a4000'},
@@ -1315,25 +1327,27 @@ function saveAsImage() {
     {main:'#ff6b9d',light:'#ffb8d0',dark:'#b02050',text:'#600020'},
   ];
   function cp(n) {
-    if(n<=10) return PAL[0]; if(n<=20) return PAL[1];
-    if(n<=30) return PAL[2]; if(n<=40) return PAL[3]; return PAL[4];
+    if(n<=10) return PAL[0];
+    if(n<=20) return PAL[1];
+    if(n<=30) return PAL[2];
+    if(n<=40) return PAL[3];
+    return PAL[4];
   }
 
+  // ── 메인 번호 공들
   const ballR = 46;
   const totalW = currentNums.length * (ballR*2 + 14) - 14;
   const startX = (W - totalW) / 2 + ballR;
-  const ballY = H/2 + 18;
+  const ballY = 170;
 
   currentNums.forEach((n, i) => {
     const p = cp(n);
     const bx = startX + i * (ballR*2 + 14);
 
-    // 그림자
     c.save();
     c.shadowColor = p.main;
     c.shadowBlur = 18;
 
-    // 픽셀 단위 원 그리기
     const px = Math.max(3, Math.floor(ballR / 7));
     const ir = Math.floor(ballR / px);
 
@@ -1358,7 +1372,6 @@ function saveAsImage() {
       }
     }
 
-    // 외곽선
     for (let row=-ir; row<=ir; row++) {
       for (let col=-ir; col<=ir; col++) {
         const dist = Math.sqrt(row*row+col*col);
@@ -1370,7 +1383,6 @@ function saveAsImage() {
     }
     c.restore();
 
-    // 숫자
     c.font = `bold ${ballR*0.52}px 'Press Start 2P', monospace`;
     c.textAlign = 'center';
     c.textBaseline = 'middle';
@@ -1380,13 +1392,66 @@ function saveAsImage() {
     c.fillText(n, bx, ballY);
   });
 
-  // ── 하단 브랜드
+  // 하단 메시지
+  c.font = "bold 10px 'Press Start 2P', monospace";
+  c.textAlign = 'center';
+  c.fillStyle = '#39ff14';
+  c.fillText('✦ LUCKY NUMBER GET! ✦', W/2, 258);
+
+  // ── PLAY HISTORY 저장 이미지에 포함
+  if (historyNums.length > 0) {
+    const boxX = 52;
+    const boxY = 282;
+    const boxW = W - 104;
+    const boxH = historyBlockH - 10;
+
+    c.fillStyle = '#000';
+    c.fillRect(boxX, boxY, boxW, boxH);
+    c.strokeStyle = '#c77dff';
+    c.lineWidth = 4;
+    c.strokeRect(boxX, boxY, boxW, boxH);
+
+    c.font = "9px 'Press Start 2P', monospace";
+    c.textAlign = 'left';
+    c.fillStyle = '#c77dff';
+    c.fillText('▶ PLAY HISTORY', boxX + 14, boxY + 20);
+
+    historyNums.forEach((row, idx) => {
+      const rowY = boxY + 44 + idx * 34;
+
+      c.font = "8px 'Press Start 2P', monospace";
+      c.fillStyle = '#777';
+      c.fillText(`#${idx+1}`, boxX + 14, rowY);
+
+      const startTagX = boxX + 54;
+      row.forEach((n, i) => {
+        const p = cp(n);
+        const tagX = startTagX + i * 68;
+        const tagY = rowY - 10;
+        const tagW = 48;
+        const tagH = 20;
+
+        c.fillStyle = '#101018';
+        c.fillRect(tagX, tagY, tagW, tagH);
+        c.strokeStyle = p.main;
+        c.lineWidth = 2;
+        c.strokeRect(tagX, tagY, tagW, tagH);
+
+        c.font = "8px 'Press Start 2P', monospace";
+        c.textAlign = 'center';
+        c.fillStyle = p.main;
+        c.fillText(String(n), tagX + tagW/2, rowY + 1);
+      });
+    });
+  }
+
+  // 브랜드
   c.font = "7px 'Press Start 2P', monospace";
   c.textAlign = 'center';
   c.fillStyle = 'rgba(255,107,157,0.5)';
   c.fillText('LOTTO ARCADE · @BOBORANUN', W/2, H-22);
 
-  // ── 별 장식
+  // 별 장식
   const stars = ['✦','★','◆','✶'];
   const starC = ['#ff6b9d','#ffe135','#00d4ff','#39ff14','#c77dff'];
   c.font = '11px sans-serif';
@@ -1396,7 +1461,6 @@ function saveAsImage() {
     c.fillText(stars[i%stars.length], sx, sy);
   });
 
-  // ── 다운로드
   setTimeout(() => {
     const link = document.createElement('a');
     link.download = `lotto_${dateStr.replace(/\./g,'')}.png`;
@@ -1405,11 +1469,12 @@ function saveAsImage() {
 
     btn.textContent = '📷 SAVE IMAGE';
     btn.style.pointerEvents = '';
-    showToast('✓ IMAGE SAVED!');
+    showToast('✓ HISTORY INCLUDED IN IMAGE!');
   }, 100);
 }
 
 function showToast(msg) {
+
   const t = document.getElementById('saveToast');
   t.textContent = msg;
   t.classList.add('show');
